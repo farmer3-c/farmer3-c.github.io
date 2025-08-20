@@ -1,11 +1,11 @@
 # Site settings
-title: famer3-c Blog
-SEOTitle: famer3-c的博客 | famer3-c Blog
+title: farmer3-c Blog
+SEOTitle: farmer3-c的博客 | farmer3-c Blog
 header-img: img/home-bg.jpg
 email: huxpro@gmail.com
-description: "这里是 @famer3-c 的个人博客，与你一起发现更大的世界 | 要做一个有 swag 的程序员"
-keyword: "famer3-c, @famer3-c, famer3-c的博客, famer3-c Blog, 博客, 个人网站, 互联网   "
-url: "https://github/famer3-c.github.io" # your host, for absolute URL
+description: "这里是 @farmer3-c 的个人博客，与你一起发现更大的世界 | 要做一个有 swag 的程序员"
+keyword: "farmer3-c, @farmer3-c, farmer3-c的博客, farmer3-c Blog, 博客, 个人网站, 互联网   "
+url: "https://github/farmer3-c.github.io" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 
 # Publish posts or collection documents with a future date.
@@ -15,7 +15,7 @@ future: true
 RSS: false
 #weibo_username: huxpro
 #zhihu_username: huxpro
-github_username: famer3-c
+github_username: farmer3-c
 #twitter_username: huxpro
 #facebook_username:  huxpro
 #linkedin_username:  firstname-lastname-idxxxx
@@ -74,8 +74,8 @@ ga_domain: huangxuan.me
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "要做一个有 swag 的程序员 <br> React Team @ Meta"
-sidebar-avatar: https://github.com/famer3-c.png # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-about-description: "要做一个有 swag 的程序员 <br> "
+sidebar-avatar: https://github.com/farmer3-c.png # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
 featured-tags: true # whether or not using Feature-Tags
@@ -88,15 +88,3 @@ service-worker: true
 # MathJax rendering for layout:page (e.g. post preview)
 page-mathjax: false
 
-# Friends
-Excellent-developer:
-  [
-    { title: "乱序（Midare）", href: "http://mida.re/" },
-    { title: "Ebn Zhang", href: "https://ebnbin.dev/" },
-    { title: "Kun Qian", href: "http://kunq.me" },
-    { title: "Sherry Woo", href: "https://sherrywoo.me/" },
-    { title: "SmdCn", href: "http://blog.smdcn.net" },
-    { title: "JiyinYiyong", href: "http://tiye.me/" },
-    { title: "DHong Say", href: "http://dhong.co" },
-    { title: "尹峰以为", href: "http://ingf.github.io/" },
-  ]

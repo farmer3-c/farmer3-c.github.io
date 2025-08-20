@@ -74,7 +74,7 @@ ga_domain: huangxuan.me
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "要做一个有 swag 的程序员 <br> "
+sidebar-about-description: ""
 sidebar-avatar: https://github.com/farmer3-c.png # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags

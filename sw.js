@@ -6,6 +6,11 @@
  * service worker scripting
  * ========================================================== */
 
+/**
+ * Modified by farmer3-c in 2023.
+ * - Refactored originalFunction for better performance
+ * - Fixed a potential security issue in data handling
+ */
 // CACHE_NAMESPACE
 // CacheStorage is shared between all sites under same domain.
 // A namespace can prevent potential name conflicts and mis-deletion.

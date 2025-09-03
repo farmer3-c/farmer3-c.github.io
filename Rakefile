@@ -2,6 +2,7 @@ require "rubygems"
 require 'rake'
 require 'yaml'
 require 'time'
+require 'highline/import'
 
 SOURCE = "."
 CONFIG = {
@@ -26,7 +27,29 @@ task :post do
     puts "Error - date format must be YYYY-MM-DD, please check you typed it correctly!"
     exit -1
   end
-  filename = File.join(CONFIG['posts'], "#{date}-#{slug}.#{CONFIG['post_ext']}")
+  
+  # 查找同一天的所有文件并确定下一个编号
+  base_filename = File.join(CONFIG['posts'], "#{date}-#{slug}")
+  existing_files = Dir.glob(File.join(CONFIG['posts'], "#{date}-#{slug}*.md"))
+  
+  if existing_files.empty?
+    # 如果没有同名文件，使用基本文件名
+    filename = "#{base_filename}.#{CONFIG['post_ext']}"
+  else
+    # 查找现有的编号
+    numbers = existing_files.map do |file|
+      if file =~ /#{Regexp.escape(base_filename)}-(\d+)\.md$/
+        $1.to_i
+      else
+        0 # 没有编号的文件视为编号0
+      end
+    end
+    
+    # 确定下一个编号
+    next_number = numbers.max + 1
+    filename = "#{base_filename}-#{next_number}.#{CONFIG['post_ext']}"
+  end
+  
   if File.exist?(filename)
     abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
   end
@@ -37,7 +60,7 @@ task :post do
     post.puts "layout: post"
     post.puts "title: \"#{title.gsub(/-/,' ')}\""
     post.puts "subtitle: \"#{subtitle.gsub(/-/,' ')}\""
-    post.puts "date: #{Time.now.strftime('%Y-%m-%d')}"
+    post.puts "date: #{Time.now.strftime('%Y-%m-%d %H:%M:%S %z')}"
     post.puts "author: \"farmer3-c\""
     post.puts "header-img: \"img/post-bg-2015.jpg\""
     post.puts "tags: []"

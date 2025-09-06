@@ -44,14 +44,14 @@ $\textit{x}_0=3,\textit{y}_0=3$
 
 First,calculate the gradient,
 $\nabla \textit{f}_{(x,y)}=(\frac{\partial f}{\partial x },\frac{\partial f}{\partial y }) $  
-$\frac{\partial f}{\partial x }=3x^2+6x-9 \\
+$\frac{\partial f}{\partial x }=3x^2+6x-9 \newline
 \frac{\partial f}{\partial y }=-3y^2-6y$  
 
 Second,select a suitable learning rate ,
 we try to set $\alpha =0.01$,which can be changed if not suitable.
 
 Iterative updates:  
-$x_{n+1}=x_{n}-\alpha \frac{\partial f}{\partial x }\\
+$x_{n+1}=x_{n}-\alpha \frac{\partial f}{\partial x }\newline
 y_{n+1}=y_{n}-\alpha \frac{\partial f}{\partial y }$
   
 Ending up finding the minimum value $f_{(1,-2)}=-9$
@@ -62,7 +62,7 @@ $f_{(x,y)}$  is at the critical point $(a,b) \iff \frac{\partial f}{\partial x }
 Hessian matrix is
 $
 H=\begin{vmatrix}
-\frac{\partial^2 f}{\partial x^2} & \frac{\partial f^2}{\partial x \partial y}  \\
+\frac{\partial^2 f}{\partial x^2} & \frac{\partial f^2}{\partial x \partial y}  \newline
 \frac{\partial f^2}{\partial x \partial y} & \frac{\partial^2 f}{\partial x^2} 
 \end{vmatrix}
 $  
@@ -85,14 +85,14 @@ Geometric intuitive derivation:
 
 At point $x_{n}$,draw the tangent line of the function $y=f(x)$,the intersection point of this tangent line with the x-axis is used as the next estimate.
   
-$y -f(x_{n})=f'(x_{n})(x-x_{n})\\
-0 -f(x_{n})=f'(x_{n})(x-x_{n})\\
+$y -f(x_{n})=f'(x_{n})(x-x_{n})\newline
+0 -f(x_{n})=f'(x_{n})(x-x_{n})\newline
 \to x_{n+1}=x_{n}- \frac {\textit f(x_{n})}{\textit f'(x_{n})}$
 ###### II  $ x_{n+1}=x_{n}- \frac {\textit f'(x_{n})}{\textit f''(x_{n})} $    
 
 Taylor expansion:  
-$f(x_{k}+t) \approx f(x_{k})+f'(x_{k})+ \frac {1}{2}f''(x_{k})t^2\\
-\frac {\partial f(x_{k}+t)}{\partial t} \approx f'(x_{k})+f''(x_{k})t=0 \to t=- \frac {\textit f'(x_{n})}{\textit f''(x_{n})}\\
+$f(x_{k}+t) \approx f(x_{k})+f'(x_{k})+ \frac {1}{2}f''(x_{k})t^2\newline
+\frac {\partial f(x_{k}+t)}{\partial t} \approx f'(x_{k})+f''(x_{k})t=0 \to t=- \frac {\textit f'(x_{n})}{\textit f''(x_{n})}\newline
 x_{n+1}=x_{n}- \frac {\textit f'(x_{n})}{\textit f''(x_{n})} $
 
 

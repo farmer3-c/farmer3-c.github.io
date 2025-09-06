@@ -6,6 +6,7 @@ date: 2025-09-03 23:32:42 +0800
 author: "farmer3-c"
 header-img: "img/post-bg-2015.jpg"
 tags: []
+mathjax: true 
 ---
 
 

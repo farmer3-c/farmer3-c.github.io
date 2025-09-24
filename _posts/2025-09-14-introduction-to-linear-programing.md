@@ -23,16 +23,24 @@ To solve a linear programming problem, we first need to express it in **standard
     $f(x_{1}, x_{2}) = c_{1}x_{1} + c_{2}x_{2}$
 
 2.  **A set of linear inequality constraints.** These are the rules or limitations of the problem.
-$a_{11}x_{1} + a_{12}x_{2} \leq b_{1} \newline a_{21}x_{1} + a_{22}x_{2} \leq b_{2} \newline a_{31}x_{1} + a_{32}x_{2} \leq b_{3}$
+
+
+    $a_{11}x_{1} + a_{12}x_{2} \leq b_{1} $
+
+    $a_{21}x_{1} + a_{22}x_{2} \leq b_{2} $
+
+    $ a_{31}x_{1} + a_{32}x_{2} \leq b_{3}$
 
 3.  **Non-negative variables.** The decision variables must be greater than or equal to zero.
 
 
-$x_{1} \geq 0 \newline x_{2} \geq 0$
+    $x_{1} \geq 0 $
+
+    $x_{2} \geq 0$
 
 In a more compact matrix notation, the problem can be expressed as:
 
-${maximize } \{ {c^{T}x} \mid {x} \in \mathbb{R}^{n} \land {Ax} \leq {b} \land \mathbf{x} \geq {0} \} $
+$\textbf{maximize } \{ \mathbf{c^{T}x} \mid \mathbf{x} \in \mathbb{R}^{n} \land \mathbf{Ax} \leq \mathbf{b} \land \mathbf{x} \geq \mathbf{0} \}$
 
 ---
 

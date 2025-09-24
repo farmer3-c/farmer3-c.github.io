@@ -24,14 +24,14 @@ To solve a linear programming problem, we first need to express it in **standard
 
 2.  **A set of linear inequality constraints.** These are the rules or limitations of the problem.
     $$
-    a_{11}x_{1} + a_{12}x_{2} \leq b_{1} \\
-    a_{21}x_{1} + a_{22}x_{2} \leq b_{2} \\
+    a_{11}x_{1} + a_{12}x_{2} \leq b_{1} \newline
+    a_{21}x_{1} + a_{22}x_{2} \leq b_{2} \newline
     a_{31}x_{1} + a_{32}x_{2} \leq b_{3}
     $$
 
 3.  **Non-negative variables.** The decision variables must be greater than or equal to zero.
     $$
-    x_{1} \geq 0 \\
+    x_{1} \geq 0 \newline
     x_{2} \geq 0
     $$
 
@@ -45,7 +45,7 @@ $$\textbf{maximize } \{ \mathbf{c^{T}x} \mid \mathbf{x} \in \mathbb{R}^{n} \land
 
 Let's apply these concepts to a real-world scenario. An oil refinery produces two products: **jet fuel** and **gasoline**. 
 
-* The profit is **$0.10 per barrel** for jet fuel and **$0.20 per barrel** for gasoline.
+* The profit is **$0.10 per barrel** for jet fuel and **\$0.20 per barrel** for gasoline.
 * The refinery has **10,000 barrels** of crude oil available.
 * A government contract requires at least **1,000 barrels** of jet fuel.
 * A private contract requires at least **2,000 barrels** of gasoline.
@@ -55,8 +55,6 @@ Let's apply these concepts to a real-world scenario. An oil refinery produces tw
 The question is: **How can the refinery maximize its profit?**
 
 
-
-[Image of an oil refinery]
 
 
 ### Step 1: Formulating the LP Model
@@ -69,9 +67,9 @@ $$\textbf{Maximize: } P = 0.10x_{1} + 0.20x_{2}$$
 Next, we establish the **constraints** based on the problem's conditions:
 $$
 \begin{aligned}
-x_{1} + x_{2} &\leq 10000 && \text{(Crude oil availability)} \\
-x_{1} &\geq 1000 && \text{(Jet fuel contract)} \\
-x_{2} &\geq 2000 && \text{(Gasoline contract)} \\
+x_{1} + x_{2} &\leq 10000 && \text{(Crude oil availability)} \newline
+x_{1} &\geq 1000 && \text{(Jet fuel contract)} \newline
+x_{2} &\geq 2000 && \text{(Gasoline contract)} \newline
 10x_{1} + 30x_{2} &\leq 180000 && \text{(Delivery capacity)}
 \end{aligned}
 $$
@@ -92,15 +90,15 @@ $$\textbf{Maximize: } P = 0.1(s_1 + 1000) + 0.2(s_2 + 2000) = 0.1s_1 + 0.2s_2 + 
 And updated constraints:
 $$
 \begin{aligned}
-(s_1 + 1000) + (s_2 + 2000) &\leq 10000 \implies s_1 + s_2 \leq 7000 \\
-10(s_1 + 1000) + 30(s_2 + 2000) &\leq 180000 \implies 10s_1 + 30s_2 \leq 110000 \\
+(s_1 + 1000) + (s_2 + 2000) &\leq 10000 \implies s_1 + s_2 \leq 7000 \newline
+10(s_1 + 1000) + 30(s_2 + 2000) &\leq 180000 \implies 10s_1 + 30s_2 \leq 110000 \newline
 s_1, s_2 &\geq 0
 \end{aligned}
 $$
 Next, we convert the inequalities into equalities by introducing **slack variables** ($k_1, k_2$). These variables represent unused resources.
 $$
 \begin{aligned}
-s_1 + s_2 + k_1 &= 7000 \\
+s_1 + s_2 + k_1 &= 7000 \newline
 10s_1 + 30s_2 + k_2 &= 110000
 \end{aligned}
 $$

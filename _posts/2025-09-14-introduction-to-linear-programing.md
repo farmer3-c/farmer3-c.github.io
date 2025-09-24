@@ -23,19 +23,16 @@ To solve a linear programming problem, we first need to express it in **standard
     $f(x_{1}, x_{2}) = c_{1}x_{1} + c_{2}x_{2}$
 
 2.  **A set of linear inequality constraints.** These are the rules or limitations of the problem.
-$a_{11}x_{1} + a_{12}x_{2} \leq b_{1} \newline
-a_{21}x_{1} + a_{22}x_{2} \leq b_{2} \newline
-a_{31}x_{1} + a_{32}x_{2} \leq b_{3}$
+$a_{11}x_{1} + a_{12}x_{2} \leq b_{1} \newline a_{21}x_{1} + a_{22}x_{2} \leq b_{2} \newline a_{31}x_{1} + a_{32}x_{2} \leq b_{3}$
 
 3.  **Non-negative variables.** The decision variables must be greater than or equal to zero.
-    $
-    x_{1} \geq 0 \newline
-    x_{2} \geq 0
-    $
+
+
+$x_{1} \geq 0 \newline x_{2} \geq 0$
 
 In a more compact matrix notation, the problem can be expressed as:
 
-${maximize } \{ {c^{T}x} \mid {x} \in \mathbb{R}^{n} \land {Ax} \leq {b} \land \mathbf{x} \geq {0} \}$
+${maximize } \{ {c^{T}x} \mid {x} \in \mathbb{R}^{n} \land {Ax} \leq {b} \land \mathbf{x} \geq {0} \} $
 
 ---
 
@@ -57,9 +54,13 @@ The question is: **How can the refinery maximize its profit?**
 First, let's define our variables. Let $x_1$ be the number of barrels of jet fuel and $x_2$ be the number of barrels of gasoline.
 
 Our objective is to maximize profit, so the **objective function** is:
+
+
 $\textbf{Maximize: } P = 0.10x_{1} + 0.20x_{2}$
 
 Next, we establish the **constraints** based on the problem's conditions:
+
+
 $
 \begin{aligned}
 x_{1} + x_{2} &\leq 10000 && \text{(Crude oil availability)} \newline
@@ -68,6 +69,8 @@ x_{2} &\geq 2000 && \text{(Gasoline contract)} \newline
 10x_{1} + 30x_{2} &\leq 180000 && \text{(Delivery capacity)}
 \end{aligned}
 $
+
+
 The plot below shows the **feasible region**—the area where all constraints are satisfied. The optimal solution will lie at one of the vertices of this region.
 
 ![A graph showing the feasible region for a linear programming problem](/img/in-post/Linear_Programming_Feasible_Region.svg.png)
@@ -81,8 +84,14 @@ The Simplex Method, a common algorithm for solving LP problems, requires a speci
 First, let's handle the minimum production requirements. We can introduce new variables, $s_1 = x_1 - 1000$ and $s_2 = x_2 - 2000$, which represent the surplus production above the minimums. This ensures our new variables are non-negative ($s_1, s_2 \geq 0$).
 
 Substituting these into our model gives a new objective function:
+
+
 $\textbf{Maximize: } P = 0.1(s_1 + 1000) + 0.2(s_2 + 2000) = 0.1s_1 + 0.2s_2 + 500$
+
+
 And updated constraints:
+
+
 $
 \begin{aligned}
 (s_1 + 1000) + (s_2 + 2000) &\leq 10000 \implies s_1 + s_2 \leq 7000 \newline
@@ -90,13 +99,19 @@ $
 s_1, s_2 &\geq 0
 \end{aligned}
 $
+
+
 Next, we convert the inequalities into equalities by introducing **slack variables** ($k_1, k_2$). These variables represent unused resources.
+
+
 $
 \begin{aligned}
 s_1 + s_2 + k_1 &= 7000 \newline
 10s_1 + 30s_2 + k_2 &= 110000
 \end{aligned}
 $
+
+
 Our objective function can be rewritten as $Z - 0.1s_1 - 0.2s_2 = 500$.
 
 ---

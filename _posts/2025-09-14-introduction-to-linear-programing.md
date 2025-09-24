@@ -40,7 +40,7 @@ To solve a linear programming problem, we first need to express it in **standard
 
 In a more compact matrix notation, the problem can be expressed as:
 
-$\textbf{maximize } \\\{ \mathbf{c^{T}x} \mid \mathbf{x} \in \mathbb{R}^{n} \land \mathbf{Ax} \leq \mathbf{b} \land \mathbf{x} \geq \mathbf{0} \}$
+$\textbf{maximize } \\\{ \mathbf{c^{T}x} \mid \mathbf{x} \in \mathbb{R}^{n} \land \mathbf{Ax} \leq \mathbf{b} \land \mathbf{x} \geq \mathbf{0} \\\}$
 
 ---
 

@@ -61,6 +61,13 @@ layout: default
                 <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
                 <!-- 网易云跟帖 评论框 end -->
                 {% endif %}
+                
+                
+                {% if site.utterances.enabled %}
+                <!-- utterances 评论框 start -->
+                {% include utterances.html %}
+                <!-- utterances 评论框 end -->
+                {% endif %}
             </div>  
 
     <!-- Side Catalog Container -->

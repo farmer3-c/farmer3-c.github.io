@@ -5,7 +5,7 @@ header-img: img/home-bg.jpg
 email: huxpro@gmail.com
 description: "这里是 @farmer3-c 的个人博客，与你一起发现更大的世界 | 要做一个有 swag 的程序员"
 keyword: "farmer3-c, @farmer3-c, farmer3-c的博客, farmer3-c Blog, 博客, 个人网站, 互联网   "
-url: "https://github/farmer3-c.github.io" # your host, for absolute URL
+url: "https://farmer3-c.github.io" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 
 # Publish posts or collection documents with a future date.
@@ -58,6 +58,13 @@ kramdown:
       line_numbers: true
       start_line: 1
 
+# 配置Utterances评论系统（基于GitHub Issues）
+utterances:
+  enabled: true
+  repo: farmer3-c/farmer3-c.github.io # 替换为您的GitHub仓库名
+  issue_term: pathname # 以路径名作为Issue标识
+  theme: github-light # 评论区主题
+
 # Disqus settings
 #disqus_username: hux
 
@@ -70,7 +77,7 @@ netease_comment: false
 
 # Google Analytics
 ga_track_id: "UA-49627206-1" # Format: UA-xxxxxx-xx
-ga_domain: huangxuan.me
+ga_domain: farmer3-c.github.io
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
@@ -88,3 +95,5 @@ service-worker: true
 # MathJax rendering for layout:page (e.g. post preview)
 page-mathjax: true
 
+
+ 

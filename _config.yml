@@ -33,6 +33,10 @@ exclude:
     "package.json",
     "README.md",
     "README.zh.md",
+    ".git",
+    ".gitignore",
+    ".DS_Store",
+    "Thumbs.db"
   ]
 anchorjs: true # if you want to customize anchor. check out line:181 of `post.html`
 # If you have timezone issue (e.g. #68) in China, uncomment to use this:
@@ -95,5 +99,8 @@ service-worker: true
 # MathJax rendering for layout:page (e.g. post preview)
 page-mathjax: true
 
-
- 
+# 优化 Jekyll 构建性能
+incremental: true  # 只重新构建更改的文件
+keep_files: []  # 指定在构建期间保留的文件
+limit_posts: 0  # 限制处理的文章数量，0 表示所有
+quiet: false    # 是否减少输出信息

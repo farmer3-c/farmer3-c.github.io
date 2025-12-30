@@ -5,7 +5,7 @@ subtitle: "matlab"
 date: 2025-11-22 08:50:29 +0800
 author: "farmer3-c"
 header-img: "img/post-bg-2015.jpg"
-tags: []
+tags: [matlab]
 ---
 # 1.Basic Arithmetic
 直接在命令行输入算式，结果存入ans变量中

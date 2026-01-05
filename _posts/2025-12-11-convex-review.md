@@ -27,11 +27,17 @@ $|H|=f_{xx}f_{yy}-(f_{xy})^2$
         若 ∣H∣<0 → 鞍点（uncertain，即非极值点）
 
         若 ∣H∣=0 → 无法判断（需要更高阶检验）
-        
+
 ## 梯度下降求极大/极小值：
 对一个复杂的函数求极值是一件困难的事，梯度下降可以使它变得简单。
-$f(x) \approx f(x_0)+(x-x_0)f'(x_0) \newline
-f(x)=f(x_0)-\Delta xf'(x_0)$
+
+$$
+\begin{aligned}
+f(x) &\approx f(x_0)+(x-x_0)f'(x_0) \\
+f(x) &= f(x_0)-\Delta xf'(x_0)
+\end{aligned}
+$$
+
 $\implies x=x_0-\Delta x$
 设置一个学习率a,或者叫步长，
 $\Delta x=a f'(x_0)$
@@ -113,13 +119,19 @@ m
 这个数字可能会很大，所以单纯形法的复杂度是指数级别的。
 ## 矩阵操作的单纯形法
 大的LP问题应该用矩阵操作的单纯形法来求解。
-$AX=b\newline
-f=CX\newline
-A=[B \ N],C=[C_B \ C_N],X=[X_B \ X_N]^T\newline
-AX=b \to X_B^T=B^{-1}b-B^{-1}NX_N^T\newline
-f=C_BB^{-1}b-(C_BB^{-1}N-C_N)X_N^T\newline
-X_N=0:f \ is \ called \ the \ basic \ solution\newline
-if \ X_N \ is \ negtive,\ this \ basic \ solution \ can \ be \ improved$
+
+$$
+\begin{aligned}
+AX &= b \\
+f &= CX \\
+A &= [B \ N],\ C=[C_B \ C_N],\ X=[X_B \ X_N]^T \\
+AX = b &\to X_B^T = B^{-1}b - B^{-1}NX_N^T \\
+f &= C_BB^{-1}b - (C_BB^{-1}N - C_N)X_N^T \\
+X_N = 0: &f \text{ is called the basic solution} \\
+\text{if } X_N \text{ is negtive, } &\text{this basic solution can be improved}
+\end{aligned}
+$$
+
 核心思想就是将变量分为基变量和非基变量，从而得到基矩阵和非基矩阵，然后用基矩阵的逆来求解非基变量的值，从而得到基本解。在基本解的基础上，我们可以通过矩阵操作来得到更优的基本解，直到基本解的非基变量的值都为非负，具体而言，通过对变量进行出基入基让基本解加的值尽可能大。
 # Lecture 4: Two-Phase Method, Duality for LP	
 ## 两阶段单纯形法
@@ -165,24 +177,47 @@ $x \geq 0，s \geq 0$
 # Lecture 5: Introduction to QP and Convex Set
 ## 例子
 一段绳子，长度为8，分成3段，每段围成一个圆形，求最小面积和，
-$Min.x_1^2+x_2^2+x_3^2\newline
-s.t. x_1+x_2+x_3=8$
+
+$$
+\begin{aligned}
+\text{Min. } &x_1^2 + x_2^2 + x_3^2 \\
+\text{s.t. } &x_1 + x_2 + x_3 = 8
+\end{aligned}
+$$
+
 更一般的，
-$Min.\frac{1}{2}x^THx+c^Tx\newline
-s.t. Ax=b$
+
+$$
+\begin{aligned}
+\text{Min. } &\frac{1}{2}x^THx + c^Tx \\
+\text{s.t. } &Ax = b
+\end{aligned}
+$$
+
 定义lagrange函数
 $L(x,\lambda)=x^THx+c^Tx+\lambda(Ax-b)$
 对x，$\lambda$求导
-$Hx+c+A\lambda=0\newline
-Ax-b=0$
+
+$$
+\begin{aligned}
+Hx + c + A\lambda &= 0 \\
+Ax - b &= 0
+\end{aligned}
+$$
+
 这两个方程就是原问题的约束条件，一般用拉格朗日乘子法来求解
 二次规划问题：
 * 目标函数是二次函数
 * 约束条件是线性函数
 
-$Min.x^THx+c^Tx\newline
-s.t. Ax=b\newline
-x \geq 0$
+$$
+\begin{aligned}
+\text{Min. } &x^THx + c^Tx \\
+\text{s.t. } &Ax = b \\
+&x \geq 0
+\end{aligned}
+$$
+
 Define Lagrangian function
 $L(x,\lambda,\beta)=x^THx+c^Tx+\lambda(Ax-b)+\beta(x-0)$
 This problem cannot be solved in the analytic way
@@ -226,15 +261,20 @@ $x=\frac{y}{2},f^*(y)=\frac{y^2}{4}$
 
 # Lecture 7: Convex Problems	
 
-$max. f_0(x)$
-$s.t. f_i(x)\leq 0$
-$h_j(x)=$
-
+$$
+\begin{aligned}
+\text{max. } &f_0(x) \\
+\text{s.t. } &f_i(x) \leq 0 \\
+&h_j(x) = 0
+\end{aligned}
+$$
 优化问题是凸问题的定义：
 * 目标函数是凸函数
 * 约束条件是凸函数
 * 定义域是凸集
+
 > 待补充
+
 # Lecture 8: Lagrangian Multiplier	
 拉格朗日算子：适用非凸优化、非线性优化、非二次优化
 
@@ -247,7 +287,9 @@ $h_j(x)=$
 整数规划要求解得变量为整数，比LP限制多。
 ## 典型问题
 • Given variable x1, x2, x3, and x4 ∈ {0, 1}
+
 • The objective is to maximize 8x1 + 11x2 + 6x3 + 4x4
+
 • It is subjective to 5x1 + 7x2 + 4x3 + 3x4 ≤ 14
 ## 剪枝法
 原问题与LP相同，加入整数限制，先按LP计算得到解，IP得到的z值一定不大于LP得到的z值。
@@ -259,4 +301,4 @@ $h_j(x)=$
  选择换出行：右端项为负（最负的）作为换出行
  选择换入列：选择换入变量时，是用 R0 行的检验数（≥0）除以换出行中负系数的绝对值（或者说除以负数），然后选最小比值（绝对值最小）对应的变量换入。
  选择换入变量：比值绝对值最小的变量换入
-# Lecture 14: Stochastic Programming 
+# Lecture 14: Stochastic Programming

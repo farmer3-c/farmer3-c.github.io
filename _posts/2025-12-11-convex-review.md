@@ -6,6 +6,7 @@ date: 2025-12-11 12:00:19 +0800
 author: "farmer3-c"
 header-img: "img/post-bg-2015.jpg"
 tags: [Convex Optimization Theory and Method]
+mathjax: true
 ---
 # Lecture 1: Unconstrained Optimization for Differentiable Functions
 
@@ -26,6 +27,7 @@ $|H|=f_{xx}f_{yy}-(f_{xy})^2$
         若 ∣H∣<0 → 鞍点（uncertain，即非极值点）
 
         若 ∣H∣=0 → 无法判断（需要更高阶检验）
+        
 ## 梯度下降求极大/极小值：
 对一个复杂的函数求极值是一件困难的事，梯度下降可以使它变得简单。
 $f(x) \approx f(x_0)+(x-x_0)f'(x_0) \newline

@@ -19,7 +19,7 @@ desc "Begin a new post in #{CONFIG['posts']}"
 task :post do
   abort("rake aborted: '#{CONFIG['posts']}' directory not found.") unless FileTest.directory?(CONFIG['posts'])
   title = ENV["title"] || "new-post"
-  subtitle = ENV["subtitle"] || "This is a subtitle"
+  subtitle = ENV["subtitle"] || " "
   slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
   begin
     date = (ENV['date'] ? Time.parse(ENV['date']) : Time.now).strftime('%Y-%m-%d')
@@ -64,6 +64,7 @@ task :post do
     post.puts "author: \"farmer3-c\""
     post.puts "header-img: \"img/post-bg-2015.jpg\""
     post.puts "tags: []"
+    post.puts "mathjax: true"
     post.puts "---"
   end
 end # task :post

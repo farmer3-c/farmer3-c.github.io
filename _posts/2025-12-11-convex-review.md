@@ -533,7 +533,7 @@ $$
 L(\lambda, \mu) = f(x) + \sum_{i=1}^{m} \lambda_i g_i(x) + \sum_{j=1}^{p} \mu_j h_j(x)
 $$
 
-$x^*,\lambda^*,\mu^*$
+$$x^*,\lambda^*,\mu^*$$
 
 是上问题的最优解
 
@@ -668,11 +668,11 @@ $$
 		分解
 		$k_i,a_i$
 		得到
-		$k_i=k_i^*+k_x,0<k_x<1,a_i=a_i^*+a_s,0<a_s<1$
+		$$k_i=k_i^*+k_x,0<k_x<1,a_i=a_i^*+a_s,0<a_s<1$$
 
 		得到
 
-		$k_i^*x_i+a_i^*x_i-1=\frac{1}{3}-k_xs_i-a_sx_s$
+		$$k_i^*x_i+a_i^*x_i-1=\frac{1}{3}-k_xs_i-a_sx_s$$
 
 		因为
 		$$\frac{1}{3}<1,0<a_s<1,0<k_x<1,x_i,s_i\geq 0\\

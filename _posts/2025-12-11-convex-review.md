@@ -19,7 +19,7 @@ mathjax: true
 如：求极值$f(x,y)=x^3-y^3+3x^2+3y^2-9x$ 
 对得到的四个驻点进行的二阶导数检验（Hessian 判别法） 
 
-$|H|=f_{xx}f_{yy}-(f_{xy})^2$
+$$|H|=f_{xx}f_{yy}-(f_{xy})^2$$
 
 令$a=f_{xx}$
 
@@ -505,8 +505,9 @@ $$
 
 $$G(\lambda, \mu) = \inf_{\substack{x \in \mathcal{D}}} (x,\lambda, \mu) =\inf_{\substack{x \in \mathcal{D}}} f(x)+ \sum_{i=1}^{m} \lambda_i g_i(x) + \sum_{j=1}^{p} \mu_j h_j(x)$$
 
-最优解为$d^*\\
-p* \geq d^*$
+最优解为$d^*$
+
+$p* \geq d^*$
 
 #### 例子
 
@@ -531,8 +532,13 @@ $$
 $$
 L(\lambda, \mu) = f(x) + \sum_{i=1}^{m} \lambda_i g_i(x) + \sum_{j=1}^{p} \mu_j h_j(x)
 $$
-$x^*,\lambda^*,\mu^*$是上问题的最优解
+
+$x^*,\lambda^*,\mu^*$
+
+是上问题的最优解
+
 有
+
 $$
 \frac{\partial L(x,\lambda^*,\mu^*)}{\partial x}\bigg|_{x=x^*} = \nabla f(x^*) + \sum_{i=1}^{m} \lambda_i^* \nabla g_i(x^*) + \sum_{j=1}^{p} \mu_j^* \nabla h_j(x^*) = 0
 $$
@@ -660,18 +666,20 @@ $$
 		$k_ix_i+a_is_i=\frac{4}{3} $
 
 		分解
-		$k_i,a_i$得到$k_i=k_i^*+k_x,0<k_x<1,a_i=a_i^*+a_s,0<a_s<1$
+		$k_i,a_i$
+		得到
+		$k_i=k_i^*+k_x,0<k_x<1,a_i=a_i^*+a_s,0<a_s<1$
 
 		得到
 
 		$k_i^*x_i+a_i^*x_i-1=\frac{1}{3}-k_xs_i-a_sx_s$
 
 		因为
-		$\frac{1}{3}<1,0<a_s<1,0<k_x<1,x_i,s_i\geq 0\\
+		$$\frac{1}{3}<1,0<a_s<1,0<k_x<1,x_i,s_i\geq 0\\
 		k_i^*x_i+a_i^*x_i-1 \in I\\
-		so \ \frac{1}{3}-k_xs_i-a_sx_s \in I \to \frac{1}{3}-k_xs_i-a_sx_s \leq 0$
+		so \ \frac{1}{3}-k_xs_i-a_sx_s \in I \to \frac{1}{3}-k_xs_i-a_sx_s \leq 0$$
 
 		加入这个条件到原问题中，得到解，否则重复上述过程。
-		
+
 		所以，对更接近x.5的变量$x_i$进行分析，得到的解一定是整数解。
 # Lecture 14: Stochastic Programming

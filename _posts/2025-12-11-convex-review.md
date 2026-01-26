@@ -77,10 +77,15 @@ $x \in R^n$
 
 #### 线性规划的数值解
 • In the year of 1939, L. Kantorovich proposed LP
+
 • In the year of 1947, G. Danzig invented “Simplex” method
+
 • In the year of 1944, John V. Neumann proposed game theory
+
 • In 1984, Narendra Karmarkar proposed “inner-point” method of LP
+
 • “Inner-point” guarantees to solve LP in polynomial time complexity
+
 LP问题在$s.t. Ax \leq b$时，可以引入松弛变量使得形如$s.t. Ax+S=b$
 
 # Lecture 3: Simplex Method 
@@ -98,14 +103,23 @@ $Z- f(x)=0$
 $s.t. Ax+S=b$
 $x \geq 0，s \geq 0$
 1.选择在目标函数行（第 0 行）中，系数最负的项，作为入基变量。
+
 2.选择在约束条件列中，解最小的项，作为出基变量。
+
 3.将出基变量的系数化为 1，其余列系数化为 0。
+
 4.将目标函数行中，系数最负的项系数化为 0。
+
 5.重复 1-4 步，直到对应于非基变量的底部行（目标函数行，通常标记为'z'）的所有项都是非负的（>=0）。
+
 特殊情况及停止条件：
+
 1.无界解：如果选择一个进入变量（最大化时 z 行中为正，最小化时为负），但该变量在约束行中的所有项为零或负，则问题无界。
+
 2.退化/停滞：可能在非基变量的 z 行中有一个零，但无法进行出基操作（离开变量的正比没有正值）。这并不总是最终停止的信号，但可能表示存在替代最优解或潜在的循环。
+
 3.本质上，只要能够改进目标函数，就继续出基操作；一旦无法改进，就找到了最优解（或无界条件）。
+
 #### 收敛和复杂度
 如果单纯形法是非退化的（预期），顶点数量有限，那么最终会收敛到一个最优解。
 但是，给定一个线性规划问题，令有n个变量，m个约束条件，从m个约束条件中选择n个来求一个基本解
@@ -160,6 +174,7 @@ $max. Z= f(x)$
 $s.t. Ax+S=b$
 $x \geq 0，s \geq 0$
 可以证明：一阶段最优解为0$\iff$原问题有可行解
+
 保持基变量在目标函数行系数为 0
 #### 两阶段单纯形法的矩阵操作
 与前一步类似
@@ -241,10 +256,12 @@ This problem cannot be solved in the analytic way
 
 可以借助导数的定义证明上面的充分必要
 #### 凸函数
+
 $$f(x)=x^TPx+q^Tx+r$$
+
 定义域是凸集时，P是半正定矩阵 $\iff$ f(x)是凸函数
 
-$||x||_p=(\sum_{i=1}^{n}|x_i|^p)^{\frac{1}{p}} is\ convex\ function\ for\ p \geq 1,x\in R^n$
+![3](/img/in-post/formula/屏幕截图%202026-01-26%20221103.png)
 
 #### 变换保持凸性
 积分、仿射变换、指数变换、对数变换、幂次变换，可以使用求导证明凸性。
@@ -258,8 +275,7 @@ $f(x)=x^2$
 
 对x求导：
 
-$\frac{\partial f^*(y)}{\partial x}=y-2x=0\\
-x=\frac{y}{2},f^*(y)=\frac{y^2}{4}$
+![4](/img/in-post/formula/屏幕截图%202026-01-26%20221359.png)
 
 #### 维持函数凸性的同时扩展
 将定义域之外的函数值设为+∞。
@@ -273,6 +289,7 @@ $$
 &h_j(x) = 0
 \end{aligned}
 $$
+
 优化问题是凸问题的定义：
 * 目标函数是凸函数
 * 约束条件是凸函数
@@ -303,7 +320,8 @@ max和min可以交换计算的先后顺序，不影响。之后就是求导计�
 
 #### 拉格朗日算子
 中心思想是将约束条件转化为目标函数的一部分，然后对目标函数求导。
-\[
+
+$\[
 \begin{aligned}
 &\text{Max. } f(x,y,z) = 4y - 2z \\
 &\text{s.t. } 
@@ -319,10 +337,12 @@ h(x,y,z) = x^2 + y^2 - 1 = 0
 &\Downarrow \\
 &L(x,y,z) = f(x,y,z) + \lambda g(x,y,z) + \mu h(x,y,z)
 \end{aligned}
-\]
+\]$
+
 
 Take partial derivative on $x$, $y$, $z$, $\lambda$, $\mu$,
-\[
+
+$\[
 \begin{cases}
 L_x = f_x + \lambda g_x + \mu h_x = 0\\
 L_y = f_y + \lambda g_y + \mu h_y = 0\\
@@ -336,16 +356,16 @@ L_\mu = h_x = 0
 4 - \lambda + 2y\mu = 0\\
 -2 - \lambda = 0
 \end{cases}
-\]
+\]$
 
-\[
+$\[
 \Downarrow \quad \lambda = -2,\; x\mu = 2,\; y\mu = -3
 \]
 \[
 (x\mu)^2 + (y\mu)^2 = \mu^2(x^2 + y^2) = \mu^2 = 13
-\]
+\]$
 
-\[
+$\[
 \begin{aligned}
 &(1)\; \mu = -\sqrt{13}:\; 
 x = -\frac{2}{\sqrt{13}},\; y = \frac{3}{\sqrt{13}},\; z = -\frac{7}{\sqrt{13}} - 1,\; f = 2\sqrt{13} + 2\\
@@ -353,7 +373,7 @@ x = -\frac{2}{\sqrt{13}},\; y = \frac{3}{\sqrt{13}},\; z = -\frac{7}{\sqrt{13}} 
 x = \frac{2}{\sqrt{13}},\; y = -\frac{3}{\sqrt{13}},\; z = \frac{7}{\sqrt{13}} - 1,\; f = 2 - 2\sqrt{13}
 \end{aligned}
 \]
-
+$
 So, maximize of $f$ is $2\sqrt{13} + 2$.
 
 # Lecture 9: Lagrangian Dual and KKT Condition 	

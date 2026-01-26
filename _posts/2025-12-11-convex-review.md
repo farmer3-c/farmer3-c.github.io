@@ -342,38 +342,39 @@ h(x,y,z) = x^2 + y^2 - 1 = 0
 
 Take partial derivative on $x$, $y$, $z$, $\lambda$, $\mu$,
 
-$\[
-\begin{cases}
-L_x = f_x + \lambda g_x + \mu h_x = 0\\
-L_y = f_y + \lambda g_y + \mu h_y = 0\\
-L_z = f_z + \lambda g_z + \mu h_z = 0\\
-L_\lambda = g_x = 0\\
-L_\mu = h_x = 0
-\end{cases}
-\Downarrow
-\begin{cases}
-2\lambda + 2x\mu = 0\\
-4 - \lambda + 2y\mu = 0\\
--2 - \lambda = 0
-\end{cases}
-\]$
+	$\[
+	\begin{cases}
+	L_x = f_x + \lambda g_x + \mu h_x = 0\\
+	L_y = f_y + \lambda g_y + \mu h_y = 0\\
+	L_z = f_z + \lambda g_z + \mu h_z = 0\\
+	L_\lambda = g_x = 0\\
+	L_\mu = h_x = 0
+	\end{cases}
+	\Downarrow
+	\begin{cases}
+	2\lambda + 2x\mu = 0\\
+	4 - \lambda + 2y\mu = 0\\
+	-2 - \lambda = 0
+	\end{cases}
+	\]$
 
-$\[
-\Downarrow \quad \lambda = -2,\; x\mu = 2,\; y\mu = -3
-\]
-\[
-(x\mu)^2 + (y\mu)^2 = \mu^2(x^2 + y^2) = \mu^2 = 13
-\]$
+	$\[
+	\Downarrow \quad \lambda = -2,\; x\mu = 2,\; y\mu = -3
+	\]
+	\[
+	(x\mu)^2 + (y\mu)^2 = \mu^2(x^2 + y^2) = \mu^2 = 13
+	\]$
 
-$\[
-\begin{aligned}
-&(1)\; \mu = -\sqrt{13}:\; 
-x = -\frac{2}{\sqrt{13}},\; y = \frac{3}{\sqrt{13}},\; z = -\frac{7}{\sqrt{13}} - 1,\; f = 2\sqrt{13} + 2\\
-&(2)\; \mu = \sqrt{13}:\; 
-x = \frac{2}{\sqrt{13}},\; y = -\frac{3}{\sqrt{13}},\; z = \frac{7}{\sqrt{13}} - 1,\; f = 2 - 2\sqrt{13}
-\end{aligned}
-\]
-$
+	$\[
+	\begin{aligned}
+	&(1)\; \mu = -\sqrt{13}:\; 
+	x = -\frac{2}{\sqrt{13}},\; y = \frac{3}{\sqrt{13}},\; z = -\frac{7}{\sqrt{13}} - 1,\; f = 2\sqrt{13} + 2\\
+	&(2)\; \mu = \sqrt{13}:\; 
+	x = \frac{2}{\sqrt{13}},\; y = -\frac{3}{\sqrt{13}},\; z = \frac{7}{\sqrt{13}} - 1,\; f = 2 - 2\sqrt{13}
+	\end{aligned}
+	\]
+	$
+	
 So, maximize of $f$ is $2\sqrt{13} + 2$.
 
 # Lecture 9: Lagrangian Dual and KKT Condition 	

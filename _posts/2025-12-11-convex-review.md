@@ -8,6 +8,20 @@ header-img: "img/post-bg-2015.jpg"
 tags: [Convex Optimization Theory and Method]
 mathjax: true
 ---
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      processEscapes: true
+    }
+  });
+</script>
+
+
 # Lecture 1: Unconstrained Optimization for Differentiable Functions
 
 #### 几个无限制可微问题的优化：
@@ -256,9 +270,7 @@ This problem cannot be solved in the analytic way
 
 可以借助导数的定义证明上面的充分必要
 #### 凸函数
-
 $$f(x)=x^TPx+q^Tx+r$$
-
 定义域是凸集时，P是半正定矩阵 $\iff$ f(x)是凸函数
 
 ![3](/img/in-post/formula/屏幕截图%202026-01-26%20221103.png)
@@ -289,7 +301,6 @@ $$
 &h_j(x) = 0
 \end{aligned}
 $$
-
 优化问题是凸问题的定义：
 * 目标函数是凸函数
 * 约束条件是凸函数
@@ -320,8 +331,7 @@ max和min可以交换计算的先后顺序，不影响。之后就是求导计�
 
 #### 拉格朗日算子
 中心思想是将约束条件转化为目标函数的一部分，然后对目标函数求导。
-
-$\[
+\[
 \begin{aligned}
 &\text{Max. } f(x,y,z) = 4y - 2z \\
 &\text{s.t. } 
@@ -337,44 +347,41 @@ h(x,y,z) = x^2 + y^2 - 1 = 0
 &\Downarrow \\
 &L(x,y,z) = f(x,y,z) + \lambda g(x,y,z) + \mu h(x,y,z)
 \end{aligned}
-\]$
-
+\]
 
 Take partial derivative on $x$, $y$, $z$, $\lambda$, $\mu$,
+\[
+\begin{cases}
+L_x = f_x + \lambda g_x + \mu h_x = 0\\
+L_y = f_y + \lambda g_y + \mu h_y = 0\\
+L_z = f_z + \lambda g_z + \mu h_z = 0\\
+L_\lambda = g_x = 0\\
+L_\mu = h_x = 0
+\end{cases}
+\Downarrow
+\begin{cases}
+2\lambda + 2x\mu = 0\\
+4 - \lambda + 2y\mu = 0\\
+-2 - \lambda = 0
+\end{cases}
+\]
 
-	$\[
-	\begin{cases}
-	L_x = f_x + \lambda g_x + \mu h_x = 0\\
-	L_y = f_y + \lambda g_y + \mu h_y = 0\\
-	L_z = f_z + \lambda g_z + \mu h_z = 0\\
-	L_\lambda = g_x = 0\\
-	L_\mu = h_x = 0
-	\end{cases}
-	\Downarrow
-	\begin{cases}
-	2\lambda + 2x\mu = 0\\
-	4 - \lambda + 2y\mu = 0\\
-	-2 - \lambda = 0
-	\end{cases}
-	\]$
+\[
+\Downarrow \quad \lambda = -2,\; x\mu = 2,\; y\mu = -3
+\]
+\[
+(x\mu)^2 + (y\mu)^2 = \mu^2(x^2 + y^2) = \mu^2 = 13
+\]
 
-	$\[
-	\Downarrow \quad \lambda = -2,\; x\mu = 2,\; y\mu = -3
-	\]
-	\[
-	(x\mu)^2 + (y\mu)^2 = \mu^2(x^2 + y^2) = \mu^2 = 13
-	\]$
+\[
+\begin{aligned}
+&(1)\; \mu = -\sqrt{13}:\; 
+x = -\frac{2}{\sqrt{13}},\; y = \frac{3}{\sqrt{13}},\; z = -\frac{7}{\sqrt{13}} - 1,\; f = 2\sqrt{13} + 2\\
+&(2)\; \mu = \sqrt{13}:\; 
+x = \frac{2}{\sqrt{13}},\; y = -\frac{3}{\sqrt{13}},\; z = \frac{7}{\sqrt{13}} - 1,\; f = 2 - 2\sqrt{13}
+\end{aligned}
+\]
 
-	$\[
-	\begin{aligned}
-	&(1)\; \mu = -\sqrt{13}:\; 
-	x = -\frac{2}{\sqrt{13}},\; y = \frac{3}{\sqrt{13}},\; z = -\frac{7}{\sqrt{13}} - 1,\; f = 2\sqrt{13} + 2\\
-	&(2)\; \mu = \sqrt{13}:\; 
-	x = \frac{2}{\sqrt{13}},\; y = -\frac{3}{\sqrt{13}},\; z = \frac{7}{\sqrt{13}} - 1,\; f = 2 - 2\sqrt{13}
-	\end{aligned}
-	\]
-	$
-	
 So, maximize of $f$ is $2\sqrt{13} + 2$.
 
 # Lecture 9: Lagrangian Dual and KKT Condition 	

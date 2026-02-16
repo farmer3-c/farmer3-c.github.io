@@ -14,7 +14,7 @@
 // CACHE_NAMESPACE
 // CacheStorage is shared between all sites under same domain.
 // A namespace can prevent potential name conflicts and mis-deletion.
-const CACHE_NAMESPACE = 'main-v2-'
+const CACHE_NAMESPACE = 'main-v3-'
 
 const CACHE = CACHE_NAMESPACE + 'precache-then-runtime';
 const PRECACHE_LIST = [
@@ -212,13 +212,8 @@ self.addEventListener('fetch', event => {
         .catch(_ => {/* eat any errors */ })
     );
 
-    // If one request is a HTML naviagtion, checking update!
-    if (isNavigationReq(event.request)) {
-      // you need "preserve logs" to see this log
-      // cuz it happened before navigating
-      console.log(`fetch ${event.request.url}`)
-      event.waitUntil(revalidateContent(cached, fetchedCopy))
-    }
+    // 使用 stale-while-revalidate 策略：先返回缓存，后台更新
+    // 不主动触发页面刷新，用户下次访问时自然看到新内容
   }
 });
 

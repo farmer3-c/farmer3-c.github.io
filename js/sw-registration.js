@@ -47,8 +47,8 @@ if(navigator.serviceWorker){
     
     if(data.command == "UPDATE_FOUND"){
       console.log("UPDATE_FOUND_BY_SW", data);
-      // 自动刷新页面，无需手动点击
-      location.reload();
+      // 检测到更新，但不立即刷新，让用户下次访问时看到新内容
+      // 如果需要手动刷新，可以在这里添加提示
     }
   }
 }

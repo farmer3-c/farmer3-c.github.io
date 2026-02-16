@@ -14,7 +14,7 @@
 // CACHE_NAMESPACE
 // CacheStorage is shared between all sites under same domain.
 // A namespace can prevent potential name conflicts and mis-deletion.
-const CACHE_NAMESPACE = 'main-v4-'
+const CACHE_NAMESPACE = 'main-v5-'
 
 const CACHE = CACHE_NAMESPACE + 'precache-then-runtime';
 const PRECACHE_LIST = [
@@ -122,14 +122,20 @@ self.addEventListener('install', e => {
  *  waitUntil(): activating ====> activated
  */
 self.addEventListener('activate', event => {
-  // delete old deprecated caches.
-  caches.keys().then(cacheNames => Promise.all(
-    cacheNames
-      .filter(cacheName => DEPRECATED_CACHES.includes(cacheName))
-      .map(cacheName => caches.delete(cacheName))
-  ))
-  console.log('service worker activated.')
-  event.waitUntil(self.clients.claim());
+  // 删除所有旧的缓存，只保留当前版本
+  event.waitUntil(
+    caches.keys().then(cacheNames => Promise.all(
+      cacheNames
+        .filter(cacheName => !cacheName.startsWith(CACHE_NAMESPACE))
+        .map(cacheName => {
+          console.log('Deleting old cache:', cacheName);
+          return caches.delete(cacheName);
+        })
+    )).then(() => {
+      console.log('service worker activated, old caches cleared.');
+      return self.clients.claim();
+    })
+  );
 });
 
 
@@ -223,18 +229,20 @@ self.addEventListener('fetch', event => {
           })
       );
     } else {
-      // 静态资源：stale-while-revalidate
+      // 静态资源：优先使用缓存，但后台一定更新
       event.respondWith(
-        Promise.race([fetched.catch(_ => cached), cached])
-          .then(resp => resp || fetched)
-          .catch(_ => caches.match('offline.html'))
-      );
-      
-      // 更新缓存
-      event.waitUntil(
-        Promise.all([fetchedCopy, caches.open(CACHE)])
-          .then(([response, cache]) => response.ok && cache.put(event.request, response))
-          .catch(_ => {/* eat any errors */ })
+        cached
+          .then(response => {
+            // 后台更新缓存
+            event.waitUntil(
+              Promise.all([fetchedCopy, caches.open(CACHE)])
+                .then(([response, cache]) => response.ok && cache.put(event.request, response))
+                .catch(_ => {/* eat any errors */ })
+            );
+            // 如果有缓存，先返回缓存；如果没有，等待网络请求
+            return response || fetched;
+          })
+          .catch(_ => fetched.catch(() => caches.match('offline.html')))
       );
     }
 

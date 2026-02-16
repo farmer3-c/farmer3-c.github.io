@@ -14,11 +14,16 @@
         "grunt-banner": "~0.2.3",
         "grunt-contrib-less": "^2.0.0",
         "grunt-contrib-uglify": "^4.0.1",
-        "grunt-contrib-watch": "^1.1.0"
+        "grunt-contrib-watch": "^1.1.0",
+        "browser-sync": "^2.27.10",
+        "grunt-browser-sync": "^2.2.0"
     },
     "scripts": {
         "start": "bundle exec jekyll serve",
+        "start:live": "bundle exec jekyll serve --livereload",
         "dev": "grunt watch & npm run start",
+        "dev:live": "grunt watch & npm run start:live",
+        "dev:bs": "npm run start & grunt serve",
         "boil": "git push boilerplate boilerplate:master",
         "push": "git push origin master --tag"
     }

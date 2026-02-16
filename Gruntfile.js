@@ -43,6 +43,21 @@ module.exports = function(grunt) {
                 }
             }
         },
+        browserSync: {
+            bsFiles: {
+                src : [
+                    '_site/**/*.html',
+                    '_site/**/*.css',
+                    '_site/**/*.js',
+                    '_site/**/*.{png,jpg,jpeg,gif,webp,svg}'
+                ]
+            },
+            options: {
+                proxy: "localhost:4000",
+                watchTask: true,
+                open: true
+            }
+        },
         watch: {
             scripts: {
                 files: ['js/<%= pkg.name %>.js'],
@@ -66,8 +81,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-banner');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-browser-sync');
 
     // Default task(s).
     grunt.registerTask('default', ['uglify', 'less', 'usebanner']);
+
+    // BrowserSync task
+    grunt.registerTask('serve', ['browserSync', 'watch']);
 
 };

@@ -14,7 +14,7 @@
 // CACHE_NAMESPACE
 // CacheStorage is shared between all sites under same domain.
 // A namespace can prevent potential name conflicts and mis-deletion.
-const CACHE_NAMESPACE = 'main-v3-'
+const CACHE_NAMESPACE = 'main-v4-'
 
 const CACHE = CACHE_NAMESPACE + 'precache-then-runtime';
 const PRECACHE_LIST = [
@@ -187,30 +187,56 @@ self.addEventListener('fetch', event => {
       return;
     }
 
-    // Stale-while-revalidate for possiblily dynamic content
-    // similar to HTTP's stale-while-revalidate: https://www.mnot.net/blog/2007/12/12/stale
-    // Upgrade from Jake's to Surma's: https://gist.github.com/surma/eb441223daaedf880801ad80006389f1
+    // 智能缓存策略
+    // 对于导航请求（HTML页面），优先尝试网络获取
+    // 对于静态资源，使用 stale-while-revalidate
+    const isNavigate = isNavigationReq(event.request);
     const cached = caches.match(event.request);
     const fetched = fetch(getCacheBustingUrl(event.request), { cache: "no-store" });
     const fetchedCopy = fetched.then(resp => resp.clone());
-    
-    // Call respondWith() with whatever we get first.
-    // Promise.race() resolves with first one settled (even rejected)
-    // If the fetch fails (e.g disconnected), wait for the cache.
-    // If there’s nothing in cache, wait for the fetch.
-    // If neither yields a response, return offline pages.
-    event.respondWith(
-      Promise.race([fetched.catch(_ => cached), cached])
-        .then(resp => resp || fetched)
-        .catch(_ => caches.match('offline.html'))
-    );
 
-    // Update the cache with the version we fetched (only for ok status)
-    event.waitUntil(
-      Promise.all([fetchedCopy, caches.open(CACHE)])
-        .then(([response, cache]) => response.ok && cache.put(event.request, response))
-        .catch(_ => {/* eat any errors */ })
-    );
+    if (isNavigate) {
+      // 导航请求：优先从网络获取，失败则使用缓存
+      event.respondWith(
+        fetched
+          .then(response => {
+            // 如果网络请求成功（非404），更新缓存并返回网络内容
+            if (response.ok) {
+              return caches.open(CACHE).then(cache => {
+                cache.put(event.request, response.clone());
+                return response;
+              });
+            }
+            // 如果是404（文章被删除），从缓存中移除并返回404
+            if (response.status === 404) {
+              return caches.open(CACHE).then(cache => {
+                cache.delete(event.request);
+                return response;
+              });
+            }
+            // 其他错误，尝试使用缓存
+            throw new Error('Network response not ok');
+          })
+          .catch(() => {
+            // 网络失败，使用缓存
+            return cached.then(resp => resp || caches.match('offline.html'));
+          })
+      );
+    } else {
+      // 静态资源：stale-while-revalidate
+      event.respondWith(
+        Promise.race([fetched.catch(_ => cached), cached])
+          .then(resp => resp || fetched)
+          .catch(_ => caches.match('offline.html'))
+      );
+      
+      // 更新缓存
+      event.waitUntil(
+        Promise.all([fetchedCopy, caches.open(CACHE)])
+          .then(([response, cache]) => response.ok && cache.put(event.request, response))
+          .catch(_ => {/* eat any errors */ })
+      );
+    }
 
     // 使用 stale-while-revalidate 策略：先返回缓存，后台更新
     // 不主动触发页面刷新，用户下次访问时自然看到新内容

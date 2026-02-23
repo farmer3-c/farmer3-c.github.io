@@ -1,0 +1,36 @@
+{% if page.tags.size > 0 %}
+<div class="related-posts" style="margin-top: 30px;">
+    <hr class="hidden-sm hidden-xs" style="margin: 20px 0;">
+    <h5 style="color: #333; margin-bottom: 15px; font-size: 14px; font-weight: bold;">相关文章</h5>
+    <ul class="related-posts-list" style="list-style: none; padding-left: 0; margin: 0;">
+        {% assign current_url = page.url %}
+        {% assign tag_posts = "" | split: "" %}
+        
+        {% for tag in page.tags %}
+            {% for post in site.tags[tag] %}
+                {% unless post.url == current_url %}
+                    {% unless tag_posts contains post %}
+                        {% assign tag_posts = tag_posts | push: post %}
+                    {% endunless %}
+                {% endunless %}
+            {% endfor %}
+        {% endfor %}
+        
+        {% if tag_posts.size > 0 %}
+            {% for post in tag_posts limit: 10 %}
+            <li style="margin-bottom: 10px; line-height: 1.5;">
+                <a href="{{ post.url | prepend: site.baseurl }}" title="{{ post.title }}" 
+                   style="color: #808080; text-decoration: none; font-size: 13px; display: block;
+                          transition: color 0.2s;"
+                   onmouseover="this.style.color='#4078c0'"
+                   onmouseout="this.style.color='#808080'">
+                    {{ post.title | truncate: 28 }}
+                </a>
+            </li>
+            {% endfor %}
+        {% else %}
+            <li class="no-related" style="color: #aaa; font-size: 13px;">暂无相关文章</li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}

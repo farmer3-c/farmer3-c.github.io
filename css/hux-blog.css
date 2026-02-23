@@ -1,17 +1,21 @@
 @media (min-width: 1200px) {
   .post-container,
   .sidebar-container {
-    padding-right: 5%;
+    padding-right: 1.5%;
+    box-sizing: border-box;
   }
 }
 @media (min-width: 768px) {
   .post-container {
-    padding-right: 5%;
+    padding-right: 1.5%;
+    box-sizing: border-box;
   }
 }
 .sidebar-container {
   color: #bfbfbf;
   font-size: 14px;
+  box-sizing: border-box;
+  padding-left: 10px;
 }
 .sidebar-container h5 {
   color: #a3a3a3;
@@ -47,6 +51,18 @@
 }
 .sidebar-container .short-about .list-inline > li {
   padding-left: 0px;
+}
+/* Left sidebar - Related posts styling */
+.sidebar-container .related-posts {
+  position: relative;
+  overflow: auto;
+  max-height: 100%;
+  padding-bottom: 20px;
+}
+.sidebar-container .related-posts.fixed {
+  position: fixed;
+  top: 80px;
+  width: 180px;
 }
 .catalog-container {
   padding: 0px;
@@ -868,6 +884,19 @@ samp {
 .post-container li p {
   margin: 0;
   margin-bottom: 5px;
+}
+/* Three-column layout optimization */
+article .row {
+  display: flex;
+  flex-wrap: nowrap;
+}
+article .col-lg-2 {
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+}
+article .col-lg-8 {
+  flex: 0 0 66.666667%;
+  max-width: 66.666667%;
 }
 .post-container li h1,
 .post-container li h2,

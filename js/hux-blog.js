@@ -54,7 +54,8 @@ jQuery(document).ready(function($) {
             },
             function() {
                 var currentTop = $(window).scrollTop(),
-                    $catalog = $('.side-catalog');
+                    $catalog = $('.side-catalog'),
+                    $relatedPosts = $('.related-posts');
 
                 //check if user is scrolling up by mouse or keyborad
                 if (currentTop < this.previousTop) {
@@ -72,12 +73,15 @@ jQuery(document).ready(function($) {
                 this.previousTop = currentTop;
 
 
-                //adjust the appearance of side-catalog
-                $catalog.show()
+                //adjust the appearance of side-catalog and related-posts
+                $catalog.show();
+                $relatedPosts.show();
                 if (currentTop > (bannerHeight + 41)) {
-                    $catalog.addClass('fixed')
+                    $catalog.addClass('fixed');
+                    $relatedPosts.addClass('fixed');
                 } else {
-                    $catalog.removeClass('fixed')
+                    $catalog.removeClass('fixed');
+                    $relatedPosts.removeClass('fixed');
                 }
             });
     }

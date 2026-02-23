@@ -2,7 +2,7 @@
 <div class="related-posts">
     <hr class="hidden-sm hidden-xs" style="margin: 0 0 20px 0;">
     <h5 style="color: #333; margin-bottom: 15px; font-size: 14px; font-weight: bold;">相关文章</h5>
-    <ul class="related-posts-list" style="list-style: none; padding-left: 0; margin: 0;">
+    <ul class="related-posts-list" style="list-style: none; padding-left: 0; margin: 0; max-height: 500px; overflow-y: auto;">
         {% assign current_url = page.url %}
         {% assign tag_posts = "" | split: "" %}
         
@@ -21,7 +21,7 @@
             <li style="margin-bottom: 10px; line-height: 1.5;">
                 <a href="{{ post.url | prepend: site.baseurl }}" title="{{ post.title }}" 
                    style="color: #808080; text-decoration: none; font-size: 13px; display: block;
-                          transition: color 0.2s;"
+                          transition: color 0.2s; word-break: break-word; max-width: 180px;"
                    onmouseover="this.style.color='#4078c0'"
                    onmouseout="this.style.color='#808080'">
                     {{ post.title | truncate: 28 }}

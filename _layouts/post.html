@@ -16,7 +16,7 @@ layout: default
 
     <!-- Left Sidebar - Related Posts -->
         <div class="
-            col-lg-2 col-lg-offset-0
+            col-lg-2
             visible-lg-block
             sidebar-container">
             {% include related-posts.html %}
@@ -95,18 +95,6 @@ layout: default
             </div>
         {% endunless %}
 
-    <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                {% include featured-tags.html bottom=true %}
-
-                <!-- Friends Blog -->
-                {% include friends.html %}
-            </div>
         </div>
     </div>
 </article>
@@ -163,7 +151,7 @@ layout: default
       s.parentNode.insertBefore(o, s);
     }
 </script>
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/anchor-js/ -->
 <script>
     async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
         anchors.options = {

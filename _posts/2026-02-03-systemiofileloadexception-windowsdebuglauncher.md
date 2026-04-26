@@ -5,7 +5,7 @@ subtitle: " "
 date: 2026-02-03 00:18:48 +0800
 author: "farmer3-c"
 header-img: "img/post-bg-2015.jpg"
-tags: [VS code报错]
+tags: [VS code]
 mathjax: true
 ---
 

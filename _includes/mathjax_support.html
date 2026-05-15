@@ -1,41 +1,23 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+      processEscapes: true
+    },
     TeX: {
       equationNumbers: {
         autoNumber: "AMS"
       }
     },
-    SVG: {
-      scale: 90
+    "HTML-CSS": {
+      scale: 100,
+      mtextFontInherit: true
     },
-    tex2jax: {
-      inlineMath: [ ['$','$'], ['\\(', '\\)'] ],
-      displayMath: [ ['$$','$$'], ['\\[', '\\]'] ],
-      processEscapes: true,
-    }
+    SVG: {
+      scale: 100
+    },
+    messageStyle: "none"
   });
 </script>
-<script type="text/javascript">
-(function() {
-  var srcLocal = '/js/mathjax/MathJax.js?config=TeX-AMS-MML_SVG';
-  var src1 = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_SVG';
-  var src2 = 'https://cdn.staticfile.org/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_SVG';
-  var loadScript = function(src) {
-    var s = document.createElement('script');
-    s.type = 'text/javascript';
-    s.src = src;
-    return s;
-  };
-
-  var s = loadScript(srcLocal);
-  s.onerror = function() {
-    var s1 = loadScript(src1);
-    s1.onerror = function() {
-      var s2 = loadScript(src2);
-      document.head.appendChild(s2);
-    };
-    document.head.appendChild(s1);
-  };
-  document.head.appendChild(s);
-})();
-</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>

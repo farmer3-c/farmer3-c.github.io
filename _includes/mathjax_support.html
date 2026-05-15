@@ -15,6 +15,19 @@
     }
   });
 </script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_SVG">
+<script type="text/javascript">
+(function() {
+  var src1 = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_SVG';
+  var src2 = 'https://cdn.staticfile.org/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_SVG';
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.src = src1;
+  s.onerror = function() {
+    var s2 = document.createElement('script');
+    s2.type = 'text/javascript';
+    s2.src = src2;
+    document.head.appendChild(s2);
+  };
+  document.head.appendChild(s);
+})();
 </script>

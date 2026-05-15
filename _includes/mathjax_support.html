@@ -17,16 +17,24 @@
 </script>
 <script type="text/javascript">
 (function() {
+  var srcLocal = '/js/mathjax/MathJax.js?config=TeX-AMS-MML_SVG';
   var src1 = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_SVG';
   var src2 = 'https://cdn.staticfile.org/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_SVG';
-  var s = document.createElement('script');
-  s.type = 'text/javascript';
-  s.src = src1;
+  var loadScript = function(src) {
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.src = src;
+    return s;
+  };
+
+  var s = loadScript(srcLocal);
   s.onerror = function() {
-    var s2 = document.createElement('script');
-    s2.type = 'text/javascript';
-    s2.src = src2;
-    document.head.appendChild(s2);
+    var s1 = loadScript(src1);
+    s1.onerror = function() {
+      var s2 = loadScript(src2);
+      document.head.appendChild(s2);
+    };
+    document.head.appendChild(s1);
   };
   document.head.appendChild(s);
 })();

@@ -6,18 +6,12 @@
       processEscapes: true
     },
     TeX: {
-      equationNumbers: {
-        autoNumber: "AMS"
-      }
+      equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js","AMSsymbols.js"]
     },
     "HTML-CSS": {
-      scale: 100,
-      mtextFontInherit: true
-    },
-    SVG: {
       scale: 100
-    },
-    messageStyle: "none"
+    }
   });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_HTML"></script>

@@ -19,18 +19,50 @@ description: "「Almost all problems in the world can be solved through bold ima
 <hr>
 {% endfor %}
 
-<!-- Pager -->
+<!-- Pagination -->
 {% if paginator.total_pages > 1 %}
-<ul class="pager">
+<div class="pagination">
+  <ul class="pagination-list">
+    <!-- First page -->
+    {% if paginator.page == 1 %}
+    <li class="pagination-item disabled"><span>&laquo;</span></li>
+    {% else %}
+    <li class="pagination-item"><a href="{{ site.baseurl }}/" aria-label="First page">&laquo;</a></li>
+    {% endif %}
+    
+    <!-- Previous page -->
     {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-    </li>
+    <li class="pagination-item"><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" aria-label="Previous page">&lsaquo;</a></li>
+    {% else %}
+    <li class="pagination-item disabled"><span>&lsaquo;</span></li>
     {% endif %}
+    
+    <!-- Page numbers -->
+    {% for page in (1..paginator.total_pages) %}
+      {% if page == paginator.page %}
+      <li class="pagination-item active"><span>{{ page }}</span></li>
+      {% elsif page == 1 or page == paginator.total_pages or (page >= paginator.page - 2 and page <= paginator.page + 2) %}
+      <li class="pagination-item"><a href="{{ site.baseurl }}{% if page == 1 %}/{% else %}/page{{ page }}/{% endif %}">{{ page }}</a></li>
+      {% elsif page > 1 and page < paginator.total_pages %}
+      {% if page == paginator.page - 3 or page == paginator.page + 3 %}
+      <li class="pagination-item disabled"><span>…</span></li>
+      {% endif %}
+      {% endif %}
+    {% endfor %}
+    
+    <!-- Next page -->
     {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-    </li>
+    <li class="pagination-item"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" aria-label="Next page">&rsaquo;</a></li>
+    {% else %}
+    <li class="pagination-item disabled"><span>&rsaquo;</span></li>
     {% endif %}
-</ul>
+    
+    <!-- Last page -->
+    {% if paginator.page == paginator.total_pages %}
+    <li class="pagination-item disabled"><span>&raquo;</span></li>
+    {% else %}
+    <li class="pagination-item"><a href="{{ site.baseurl }}/page{{ paginator.total_pages }}/" aria-label="Last page">&raquo;</a></li>
+    {% endif %}
+  </ul>
+</div>
 {% endif %}

@@ -29,34 +29,82 @@ description: "「Almost all problems in the world can be solved through bold ima
     {% else %}
     <li class="pagination-item"><a href="{{ site.baseurl }}/" aria-label="First page">&laquo;</a></li>
     {% endif %}
-    
+
     <!-- Previous page -->
     {% if paginator.previous_page %}
     <li class="pagination-item"><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" aria-label="Previous page">&lsaquo;</a></li>
     {% else %}
     <li class="pagination-item disabled"><span>&lsaquo;</span></li>
     {% endif %}
-    
+
     <!-- Page numbers -->
-    {% for page in (1..paginator.total_pages) %}
-      {% if page == paginator.page %}
-      <li class="pagination-item active"><span>{{ page }}</span></li>
-      {% elsif page == 1 or page == paginator.total_pages or (page >= paginator.page - 2 and page <= paginator.page + 2) %}
-      <li class="pagination-item"><a href="{{ site.baseurl }}{% if page == 1 %}/{% else %}/page{{ page }}/{% endif %}">{{ page }}</a></li>
-      {% elsif page > 1 and page < paginator.total_pages %}
-      {% if page == paginator.page - 3 or page == paginator.page + 3 %}
-      <li class="pagination-item disabled"><span>…</span></li>
+    {% assign current = paginator.page %}
+    {% assign total = paginator.total_pages %}
+    {% assign min_range = current | minus: 2 %}
+    {% assign max_range = current | plus: 2 %}
+
+    {% if total <= 5 %}
+      {% for page in (1..total) %}
+        {% if page == current %}
+        <li class="pagination-item active"><span>{{ page }}</span></li>
+        {% else %}
+        <li class="pagination-item"><a href="{{ site.baseurl }}{% if page == 1 %}/{% else %}/page{{ page }}/{% endif %}">{{ page }}</a></li>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {% assign show_left_ellipsis = false %}
+      {% assign show_right_ellipsis = false %}
+
+      {% if min_range > 2 %}
+        {% assign show_left_ellipsis = true %}
       {% endif %}
+
+      {% if max_range < total | minus: 1 %}
+        {% assign show_right_ellipsis = true %}
       {% endif %}
-    {% endfor %}
-    
+
+      {% for page in (1..total) %}
+        {% if page == 1 or page == total %}
+          {% if page == current %}
+          <li class="pagination-item active"><span>{{ page }}</span></li>
+          {% else %}
+          <li class="pagination-item"><a href="{{ site.baseurl }}{% if page == 1 %}/{% else %}/page{{ page }}/{% endif %}">{{ page }}</a></li>
+          {% endif %}
+        {% elsif page == min_range %}
+          {% if show_left_ellipsis %}
+          <li class="pagination-item disabled"><span>…</span></li>
+          {% endif %}
+          {% if page == current %}
+          <li class="pagination-item active"><span>{{ page }}</span></li>
+          {% else %}
+          <li class="pagination-item"><a href="{{ site.baseurl }}/page{{ page }}/">{{ page }}</a></li>
+          {% endif %}
+        {% elsif page > min_range and page < max_range %}
+          {% if page == current %}
+          <li class="pagination-item active"><span>{{ page }}</span></li>
+          {% else %}
+          <li class="pagination-item"><a href="{{ site.baseurl }}/page{{ page }}/">{{ page }}</a></li>
+          {% endif %}
+        {% elsif page == max_range %}
+          {% if page == current %}
+          <li class="pagination-item active"><span>{{ page }}</span></li>
+          {% else %}
+          <li class="pagination-item"><a href="{{ site.baseurl }}/page{{ page }}/">{{ page }}</a></li>
+          {% endif %}
+          {% if show_right_ellipsis %}
+          <li class="pagination-item disabled"><span>…</span></li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
     <!-- Next page -->
     {% if paginator.next_page %}
     <li class="pagination-item"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" aria-label="Next page">&rsaquo;</a></li>
     {% else %}
     <li class="pagination-item disabled"><span>&rsaquo;</span></li>
     {% endif %}
-    
+
     <!-- Last page -->
     {% if paginator.page == paginator.total_pages %}
     <li class="pagination-item disabled"><span>&raquo;</span></li>

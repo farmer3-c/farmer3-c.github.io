@@ -1,0 +1,35 @@
+zh:
+  title: 博客系统时间轴
+  items:
+    - time: "2025-03-15"
+      content: "博客系统初始化，使用 Jekyll + Hux Blog 模板搭建"
+    - time: "2025-04-20"
+      content: "添加 MathJax 支持，支持数学公式渲染"
+    - time: "2025-05-10"
+      content: "优化文章列表展示，只保留文章名和标签"
+    - time: "2025-05-15"
+      content: "添加时间轴功能，记录博客系统变动"
+    - time: "2026-02-20"
+      content: "添加 Service Worker 支持，实现离线访问和自动刷新"
+    - time: "2026-03-10"
+      content: "优化移动端响应式布局"
+    - time: "2026-05-22"
+      content: "更新个人简介页面，添加时间轴展示"
+
+en:
+  title: Blog Timeline
+  items:
+    - time: "2025-03-15"
+      content: "Blog system initialized with Jekyll + Hux Blog template"
+    - time: "2025-04-20"
+      content: "Added MathJax support for mathematical formula rendering"
+    - time: "2025-05-10"
+      content: "Optimized post list display, showing only title and tags"
+    - time: "2025-05-15"
+      content: "Added timeline feature to track blog system changes"
+    - time: "2026-02-20"
+      content: "Added Service Worker support for offline access and auto-refresh"
+    - time: "2026-03-10"
+      content: "Optimized responsive layout for mobile devices"
+    - time: "2026-05-22"
+      content: "Updated about page with timeline display"

@@ -1,0 +1,15 @@
+<div class="timeline-container">
+  <h3 class="timeline-title">{{ include.title }}</h3>
+  <ul class="timeline">
+    {% for item in include.items %}
+    <li class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+      <div class="timeline-content">
+        <span class="timeline-time">{{ item.time }}</span>
+        <div class="timeline-text">{{ item.content | markdownify }}</div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

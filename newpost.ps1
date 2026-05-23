@@ -6,7 +6,7 @@ param(
     [Parameter(Mandatory=$false)]
     [string]$Author = "farmer3-c",
     [Parameter(Mandatory=$false)]
-    [string]$HeaderImg = "img/post-bg.jpg",
+    [string]$HeaderImg = "img/post-bg-2015.jpg",
     [Parameter(Mandatory=$false)]
     [switch]$Mathjax
 )
@@ -46,3 +46,12 @@ $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 Write-Host "========================================" -ForegroundColor Green
 Write-Host "Created new post: $filename" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Green
+Write-Host "Available header images:" -ForegroundColor Cyan
+Write-Host "  - img/post-bg-2015.jpg" -ForegroundColor Gray
+Write-Host "  - img/post-bg-web.jpg" -ForegroundColor Gray
+Write-Host "  - img/post-bg-unix-linux.jpg" -ForegroundColor Gray
+Write-Host "  - img/post-bg-universe.jpg" -ForegroundColor Gray
+Write-Host "  - img/post-bg-dreamer.jpg" -ForegroundColor Gray
+Write-Host "  - img/post-bg-css.jpg" -ForegroundColor Gray
+Write-Host "  - img/post-bg-js-module.jpg" -ForegroundColor Gray
+Write-Host "  - Use -HeaderImg parameter to specify custom image" -ForegroundColor Cyan

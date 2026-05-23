@@ -3,7 +3,7 @@ layout: post
 title: "Flex 和 Bison 教程"
 date: 2026-05-23 16:26:30
 author: "farmer3-c"
-header-img: "img/post-bg.jpg"
+header-img: "img/post-bg-2015.jpg"
 tags: [flex, bison]
 ---
 

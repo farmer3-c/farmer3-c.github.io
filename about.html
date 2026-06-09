@@ -15,21 +15,7 @@ multilingual: true
     {{ about_zh | markdownify }}
     
     <!-- Timeline -->
-    <div class="timeline-container">
-      <h3 class="timeline-title">{{ site.data.timeline.zh.title }}</h3>
-      <ul class="timeline">
-        {% for item in site.data.timeline.zh.items %}
-        <li class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-line"></div>
-          <div class="timeline-content">
-            <span class="timeline-time">{{ item.time }}</span>
-            <div class="timeline-text">{{ item.content }}</div>
-          </div>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
+    {% include timeline.html title=site.data.timeline.title_zh items=site.data.timeline.items lang="zh" %}
 </div>
 
 <!-- English Version -->
@@ -38,21 +24,7 @@ multilingual: true
     {{ about_en | markdownify }}
     
     <!-- Timeline -->
-    <div class="timeline-container">
-      <h3 class="timeline-title">{{ site.data.timeline.en.title }}</h3>
-      <ul class="timeline">
-        {% for item in site.data.timeline.en.items %}
-        <li class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-line"></div>
-          <div class="timeline-content">
-            <span class="timeline-time">{{ item.time }}</span>
-            <div class="timeline-text">{{ item.content }}</div>
-          </div>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
+    {% include timeline.html title=site.data.timeline.title_en items=site.data.timeline.items lang="en" %}
 </div>
 
 

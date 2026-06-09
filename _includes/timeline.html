@@ -1,13 +1,17 @@
 <div class="timeline-container">
   <h3 class="timeline-title">{{ include.title }}</h3>
   <ul class="timeline">
-    {% for item in include.items %}
+    {% for item in include.items reversed %}
     <li class="timeline-item">
       <div class="timeline-dot"></div>
       <div class="timeline-line"></div>
       <div class="timeline-content">
         <span class="timeline-time">{{ item.time }}</span>
+        {% if include.lang %}
+        <div class="timeline-text">{{ item[include.lang] | markdownify }}</div>
+        {% else %}
         <div class="timeline-text">{{ item.content | markdownify }}</div>
+        {% endif %}
       </div>
     </li>
     {% endfor %}

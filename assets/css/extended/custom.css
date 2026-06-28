@@ -41,3 +41,59 @@ code, pre, .highlight {
 .home-info {
   display: none;
 }
+
+/* Pagination page numbers */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.pagination a.prev,
+.pagination a.next {
+  font-size: 16px;
+  padding: 4px 12px;
+  min-width: 36px;
+  text-align: center;
+}
+
+.pagination .page-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: var(--radius);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  color: var(--primary);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.pagination .page-num:hover {
+  background: var(--tertiary);
+}
+
+.pagination .page-num.active {
+  background: var(--primary);
+  color: var(--theme);
+  border-color: var(--primary);
+  font-weight: 700;
+  cursor: default;
+}
+
+.pagination .page-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  color: var(--secondary);
+  font-size: 14px;
+  user-select: none;
+}

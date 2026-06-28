@@ -1,13 +1,21 @@
-_site
-_posts/_draft
-_posts/_archive
-_archive
+# Hugo
+/public/
+/resources/_gen/
+.hugo_build.lock
+
+# Node / Dev
 node_modules
 .vscode
+
+# Logs
 *.log
 *.lock
-*.sh
+
+# OS
 .DS_Store
-.jekyll-cache
 */.DS_Store
-*/*/.DS_Store
+
+# Old Jekyll (migrated)
+_site
+.jekyll-cache
+.jekyll-metadata

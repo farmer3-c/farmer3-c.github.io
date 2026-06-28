@@ -1,0 +1,92 @@
+baseURL = "https://huangxuan.me/"
+languageCode = "zh-cn"
+title = "farmer3-c Blog"
+theme = "PaperMod"
+
+# 分页
+[pagination]
+  pagerSize = 10
+
+# 启用相关功能
+enableRobotsTXT = true
+enableEmoji = true
+
+# Goldmark Markdown 渲染器配置
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # 允许 HTML 标签在 Markdown 中使用
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)'], ['$', '$']]
+
+  # 语法高亮
+  [markup.highlight]
+    codeFences = true
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = false
+
+# 输出格式
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# PaperMod 主题配置
+[params]
+  description = "这里是 @farmer3-c 的个人博客"
+  author = "farmer3-c"
+
+  # 评论
+  comments = true
+
+  # 搜索
+  search = true
+
+  # 首页设置 - 极简，无背景图
+  homeInfoParams = false
+  disableSpecial1stPost = false
+
+  # 文章显示
+  ShowCodeCopyButtons = true
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = false
+  ShowToc = false
+  ShowFullTextinRSS = true
+
+  # 社交链接
+  social = false
+
+  # 封面图 - 全禁用
+  [params.cover]
+    hidden = true
+    linkFullImages = false
+    hiddenInList = true
+    hiddenInSingle = true
+
+# 导航菜单
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "首页"
+    url = "/"
+    weight = 10
+  [[menu.main]]
+    identifier = "posts"
+    name = "文章"
+    url = "/posts/"
+    weight = 20
+  [[menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "/about/"
+    weight = 30
+  [[menu.main]]
+    identifier = "search"
+    name = "搜索"
+    url = "/search/"
+    weight = 40

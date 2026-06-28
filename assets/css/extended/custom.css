@@ -1,0 +1,43 @@
+/* Custom styles for farmer3-c Blog */
+/* Times New Roman + SimSun font configuration */
+
+:root {
+  --font-family: 'Times New Roman', 'SimSun', 'STSong', 'Songti SC', serif;
+  --font-family-monospace: 'Courier New', 'Consolas', 'Microsoft YaHei Mono', monospace;
+}
+
+body {
+  font-family: var(--font-family);
+}
+
+.post-content {
+  font-family: var(--font-family);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Chinese text priority for SimSun */
+:lang(zh) {
+  font-family: 'SimSun', 'STSong', 'Times New Roman', serif;
+}
+
+/* Keep code blocks in monospace */
+code, pre, .highlight {
+  font-family: var(--font-family-monospace);
+}
+
+/* Post titles - keep clean */
+.post-title {
+  font-family: var(--font-family);
+  font-weight: 700;
+}
+
+/* Navigation - clean sans-serif for UI elements */
+.nav, nav, .menu, button, input, select {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Home page - minimal listing */
+.home-info {
+  display: none;
+}

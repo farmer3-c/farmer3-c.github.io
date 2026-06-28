@@ -1,0 +1,16 @@
+{{- /* MathJax 3 - loaded in head for faster rendering */}}
+{{- if (or .Params.mathjax .Site.Params.mathjax) }}
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true
+  },
+  options: {
+    skipHtmlTypes: 'script|noscript|style|textarea|pre'
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+{{- end }}

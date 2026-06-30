@@ -86,33 +86,34 @@ private:
 
 EmitPrologue() 生成函数开头的固定汇编代码，负责声明符号 、分配栈帧、保存返回地址 、保存旧的帧指针、设置新的帧指针。
 
-    ```
-        void ASMGenerator::EmitPrologue() {
-        os << "  .text\n";
-        os << "  .globl " << cur_func << "\n";
-        os << cur_func << ":\n";
-        // 栈帧: 保存 ra(4) + s0(4), 对齐到 16 字节
-        frame_size = 16;
-        os << "  addi sp, sp, -" << frame_size << "\n";
-        os << "  sw ra, " << (frame_size - 4) << "(sp)\n";
-        os << "  sw s0, " << (frame_size - 8) << "(sp)\n";
-        os << "  addi s0, sp, " << frame_size << "\n";
-        }
-    ```
+```
+    void ASMGenerator::EmitPrologue() {
+    os << "  .text\n";
+    os << "  .globl " << cur_func << "\n";
+    os << cur_func << ":\n";
+    // 栈帧: 保存 ra(4) + s0(4), 对齐到 16 字节
+    frame_size = 16;
+    os << "  addi sp, sp, -" << frame_size << "\n";
+    os << "  sw ra, " << (frame_size - 4) << "(sp)\n";
+    os << "  sw s0, " << (frame_size - 8) << "(sp)\n";
+    os << "  addi s0, sp, " << frame_size << "\n";
+    }
+```
     RISC-V 的某些指令（比如加载/存储双字 ld/sd）要求地址按 16 字节对齐，否则触发异常。目前 frame_size 写死为 16，刚好匹配。
 
 #### EmitEpilogue()
 
 对应 EmitEpilogue()（尾声）做相反的操作：恢复 ra/s0 → 回收栈帧 → ret。
-    ```
-        void ASMGenerator::EmitEpilogue() {
-        os << ".L" << cur_func << "_exit:\n";
-        os << "  lw ra, " << (frame_size - 4) << "(sp)\n";
-        os << "  lw s0, " << (frame_size - 8) << "(sp)\n";
-        os << "  addi sp, sp, " << frame_size << "\n";
-        os << "  ret\n";
-        }
-    ```
+
+```
+    void ASMGenerator::EmitEpilogue() {
+    os << ".L" << cur_func << "_exit:\n";
+    os << "  lw ra, " << (frame_size - 4) << "(sp)\n";
+    os << "  lw s0, " << (frame_size - 8) << "(sp)\n";
+    os << "  addi sp, sp, " << frame_size << "\n";
+    os << "  ret\n";
+    }
+```
 
 #### DFS 遍历族
 

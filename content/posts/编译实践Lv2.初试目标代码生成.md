@@ -142,4 +142,4 @@ autotest -riscv -s lv1 /root
 
 
 测试结果：
-![2](/img/pku-compiler/image%282%29.png)
+![2](/img/pku-compiler/lv2-test.png)

@@ -1,7 +1,4 @@
 ---
-draft: false
----
-﻿---
 layout: post
 title: "latex常用手册"
 subtitle: "latex"
@@ -10,6 +7,7 @@ author: "farmer3-c"
 header-img: "img/post-bg-2015.jpg"
 tags: [latex]
 mathjax: true 
+draft: false
 ---
 
 ## 常用符号与表达式

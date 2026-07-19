@@ -1,0 +1,93 @@
+{{- /* TOC Scroll-Spy via IntersectionObserver */ -}}
+{{- if (.Param "ShowToc") }}
+<script>
+(function() {
+  'use strict';
+
+  var toc = document.querySelector('.toc .inner');
+  if (!toc) return;
+
+  var headings = document.querySelectorAll('.post-content h2, .post-content h3, .post-content h4');
+  if (!headings.length) return;
+
+  /* Build a map: decoded heading ID -> TOC anchor element */
+  var linkMap = new Map();
+  toc.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    var id = decodeURIComponent(link.getAttribute('href').slice(1));
+    linkMap.set(id, link);
+  });
+
+  /* Track which heading IDs are currently in the spy zone */
+  var inView = new Set();
+
+  function syncActive() {
+    /* Pick the last heading in DOM order that is in the spy zone.
+       This naturally follows the user's scroll position. */
+    var activeId = '';
+    for (var i = headings.length - 1; i >= 0; i--) {
+      if (inView.has(headings[i].id)) {
+        activeId = headings[i].id;
+        break;
+      }
+    }
+
+    /* Update all TOC link classes */
+    linkMap.forEach(function(link, id) {
+      if (id === activeId) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        inView.add(entry.target.id);
+      } else {
+        inView.delete(entry.target.id);
+      }
+    });
+    syncActive();
+  }, {
+    /* Spy zone: top 30% of viewport, minus 80px for fixed header.
+       On a 900px viewport, that's y=80 to y=270. */
+    rootMargin: '-80px 0px -70% 0px',
+    threshold: 0
+  });
+
+  headings.forEach(function(h) { observer.observe(h); });
+
+  /* Also run once after load in case the page loads mid-article */
+  if (document.readyState === 'complete') {
+    /* Force a re-check by creating a synthetic entry for each heading
+       that is currently in the spy zone */
+    setTimeout(function() {
+      headings.forEach(function(h) {
+        var rect = h.getBoundingClientRect();
+        var top = rect.top;
+        /* If this heading is roughly in the spy zone... */
+        if (top >= 80 && top <= window.innerHeight * 0.3 + 80) {
+          inView.add(h.id);
+        }
+      });
+      syncActive();
+    }, 100);
+  } else {
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        headings.forEach(function(h) {
+          var rect = h.getBoundingClientRect();
+          var top = rect.top;
+          if (top >= 80 && top <= window.innerHeight * 0.3 + 80) {
+            inView.add(h.id);
+          }
+        });
+        syncActive();
+      }, 100);
+    });
+  }
+})();
+</script>
+{{- end }}

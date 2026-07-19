@@ -4,6 +4,8 @@
 :root {
   --font-family: 'Times New Roman', 'SimSun', 'STSong', 'Songti SC', serif;
   --font-family-monospace: 'Courier New', 'Consolas', 'Microsoft YaHei Mono', monospace;
+  --main-width: 1100px;
+  --post-meta-color: rgb(80, 80, 80);
 }
 
 body {
@@ -12,12 +14,39 @@ body {
   font-feature-settings: "onum" 1;
 }
 
+[data-theme="dark"] {
+  --post-meta-color: rgb(180, 180, 180);
+}
+
 .post-content {
   font-family: var(--font-family);
   font-size: 1.1rem;
   line-height: 1.8;
   font-variant-numeric: oldstyle-nums;
   font-feature-settings: "onum" 1;
+}
+
+/* Clear heading hierarchy */
+.md-content h1 {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.md-content h2 {
+  font-size: 30px;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+
+.md-content h3 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.md-content h4 {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 /* Chinese text priority for SimSun */
@@ -34,6 +63,18 @@ code, pre, .highlight {
 .post-title {
   font-family: var(--font-family);
   font-weight: 700;
+  font-size: 36px;
+}
+
+/* Reduce top whitespace on article pages */
+.post-header {
+  margin: 16px auto var(--content-gap) auto;
+}
+
+/* Darker post-meta for better readability with serif font */
+.post-meta,
+.breadcrumbs {
+  color: var(--post-meta-color);
 }
 
 /* Navigation - clean sans-serif for UI elements */
@@ -100,4 +141,107 @@ code, pre, .highlight {
   color: var(--secondary);
   font-size: 14px;
   user-select: none;
+}
+
+/* ===== Left-side TOC — clean flex layout ===== */
+
+@media (min-width: 1200px) {
+  .post-single {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    column-gap: 40px;
+  }
+
+  .post-single .post-header,
+  .post-single .post-footer {
+    flex: 0 0 100%;
+  }
+
+  /* TOC sidebar */
+  details.toc {
+    flex: 0 0 180px;
+    position: sticky;
+    top: calc(var(--header-height) + var(--gap));
+    max-height: calc(100vh - var(--header-height) - var(--gap) * 2);
+    overflow-y: auto;
+    border: none;
+    font-size: 0.85rem;
+  }
+
+  details.toc summary {
+    list-style: none;
+    cursor: default;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--secondary);
+    margin-bottom: 12px;
+    padding: 0;
+  }
+
+  details.toc summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details.toc .inner {
+    margin: 0;
+    padding: 0;
+  }
+
+  details.toc .inner ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  details.toc .inner ul ul {
+    padding-left: 12px;
+  }
+
+  details.toc .inner li {
+    margin: 1px 0;
+  }
+
+  details.toc .inner a {
+    display: block;
+    padding: 4px 8px;
+    color: var(--secondary);
+    text-decoration: none;
+    line-height: 1.5;
+    border-radius: 4px;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  details.toc .inner a:hover {
+    color: var(--primary);
+    background: var(--code-bg);
+  }
+
+  details.toc .inner a.active {
+    color: var(--primary);
+    font-weight: 600;
+    background: var(--code-bg);
+  }
+
+  /* Content takes remaining space */
+  .post-content {
+    flex: 1;
+    min-width: 0;
+    margin-top: 0;
+  }
+
+  .post-content h2,
+  .post-content h3,
+  .post-content h4 {
+    scroll-margin-top: calc(var(--header-height) + var(--gap) + 10px);
+  }
+}
+
+/* Code block overflow protection */
+.highlight pre,
+.md-content pre {
+  overflow-x: auto;
+  max-width: 100%;
 }

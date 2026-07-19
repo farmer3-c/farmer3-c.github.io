@@ -55,7 +55,8 @@ enableEmoji = true
   ShowShareButtons = false
   ShowPostNavLinks = true
   ShowBreadCrumbs = false
-  ShowToc = false
+  ShowToc = true
+  TocOpen = true
   ShowFullTextinRSS = true
 
   # 社交链接

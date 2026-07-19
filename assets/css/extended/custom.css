@@ -8,12 +8,16 @@
 
 body {
   font-family: var(--font-family);
+  font-variant-numeric: oldstyle-nums;
+  font-feature-settings: "onum" 1;
 }
 
 .post-content {
   font-family: var(--font-family);
   font-size: 1.1rem;
   line-height: 1.8;
+  font-variant-numeric: oldstyle-nums;
+  font-feature-settings: "onum" 1;
 }
 
 /* Chinese text priority for SimSun */

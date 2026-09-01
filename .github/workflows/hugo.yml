@@ -25,8 +25,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
+      # 主题用 tar 包下载，不拉 submodule——
+      # 避免 checkout 浅克隆时因子模块钉在旧 commit 上而卡死/超时。
+      # 本地开发仍走 submodule（themes/PaperMod），互不影响。
+      - name: Fetch PaperMod theme
+        run: |
+          curl -fsSL -o /tmp/papermod.tar.gz \
+            https://github.com/adityatelange/hugo-PaperMod/archive/d3768854d00ad003b0a8dbdba254ce9224377a01.tar.gz
+          mkdir -p themes/PaperMod
+          tar -xzf /tmp/papermod.tar.gz -C themes/PaperMod --strip-components=1
+          rm -rf themes/PaperMod/.git
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:

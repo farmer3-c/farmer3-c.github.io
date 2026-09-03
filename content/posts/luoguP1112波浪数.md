@@ -74,3 +74,6 @@ int main()
     return 0;
 }
 ```
+
+* 参考
+[Crazily](https://www.luogu.com.cn/article/t2b2v082)

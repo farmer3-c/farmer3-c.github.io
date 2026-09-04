@@ -124,13 +124,13 @@ draft: false
   \end{matrix}
   $$
 
-  ```
-  \begin{matrix}
-  a & b & c \\
-  d & e & f \\
-  g & h & i
-  \end{matrix}
-  ```
+    ```
+    \begin{matrix}
+    a & b & c \\
+    d & e & f \\
+    g & h & i
+    \end{matrix}
+    ```
 
 - 常用矩阵环境：
   - `matrix`：无括号
@@ -241,27 +241,27 @@ $$
 - 矩阵正定性：
   - $A \succ 0$：严格正定
 
-  ```
-  A \succ 0
-  ```
+    ```
+    A \succ 0
+    ```
 
   - $A \succeq 0$：半正定
 
-  ```
-  A \succeq 0
-  ```
+    ```
+    A \succeq 0
+    ```
 
   - $A \prec 0$：严格负定
 
-  ```
-  A \prec 0
-  ```
+    ```
+    A \prec 0
+    ```
 
   - $A \preceq 0$：半负定
 
-  ```
-  A \preceq 0
-  ```
+    ```
+    A \preceq 0
+    ```
 
 ## 常用数学公式
 
@@ -270,70 +270,70 @@ $$
   x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
   $$
 
-  ```
-  x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
-  ```
+    ```
+    x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+    ```
 
 - 勾股定理：
   $$
   a^2 + b^2 = c^2
   $$
 
-  ```
-  a^2 + b^2 = c^2
-  ```
+    ```
+    a^2 + b^2 = c^2
+    ```
 
 - 完全平方：
   $$
   (a+b)^2 = a^2 + 2ab + b^2
   $$
   
-  ```
-  (a+b)^2 = a^2 + 2ab + b^2
-  ```
+    ```
+    (a+b)^2 = a^2 + 2ab + b^2
+    ```
 
 - 三角恒等式：
   $$
   \sin^2 x + \cos^2 x = 1
   $$
 
-  ```
-  \sin^2 x + \cos^2 x = 1
-  ```
+    ```
+    \sin^2 x + \cos^2 x = 1
+    ```
 
 - 幂函数导数：
   $$
   \frac{d}{dx} x^n = nx^{n-1}
   $$
 
-  ```
-  \frac{d}{dx} x^n = nx^{n-1}
-  ```
+    ```
+    \frac{d}{dx} x^n = nx^{n-1}
+    ```
 
 - 积分基本公式：
   $$
   \int_a^b f(x)\,dx = F(b)-F(a)
   $$
 
-  ```
-  \int_a^b f(x)\,dx = F(b)-F(a)
-  ```
+    ```
+    \int_a^b f(x)\,dx = F(b)-F(a)
+    ```
 
 - 欧拉公式：
   $$
   e^{\mathrm{i}\theta} = \cos\theta + \mathrm{i}\sin\theta
   $$
 
-  ```
-  e^{\mathrm{i}\theta} = \cos\theta + \mathrm{i}\sin\theta
-  ```
+    ```
+    e^{\mathrm{i}\theta} = \cos\theta + \mathrm{i}\sin\theta
+    ```
 
 - 指数函数展开：
   $$
   e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!}
   $$
 
-  ```
-  e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!}
-  ```
+    ```
+    e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!}
+    ```
 

@@ -1,7 +1,7 @@
 ---
 title: "luoguP1115最大子段和"
 date: 2026-09-05T14:36:03+08:00
-author: farmer3-chugo new content posts/
+author: farmer3-c
 tags:
 - Algorithm programming problem
 mathjax: true
@@ -51,4 +51,5 @@ int main(){
 ```
 
 * 参考
+
     [_Arahc_](https://www.luogu.com.cn/article/6zbw4hi6)

@@ -51,5 +51,4 @@ int main(){
 ```
 
 * 参考
-
     [_Arahc_](https://www.luogu.com.cn/article/6zbw4hi6)

@@ -41,7 +41,7 @@ xelpame
 example
 
 ```
-![bwt](/static/img/algo_p/bwt.png)
+![bwt](/img/algo_p/bwt.png)
 
 注意到，`S'` 只是把原字符串 `S` 中的所有字符重新排列了一下，所以 `S'` 和 `S` 包含的字符完全相同。
 

@@ -66,9 +66,33 @@ hugo --minify
 
 ### 新建文章
 
-```bash
-hugo new content posts/my-new-post/index.md
+Windows（命令行在仓库根目录）：
+
+```cmd
+new VS Code C++ 调试报错：preLaunchTask exit code -1
+new 分类/标题
 ```
+
+`new.cmd` 会把整条命令行重新拼成一个标题再交给 Hugo，所以**标题里的空格直接写、不要加引号**，`-1` 这类以短横线开头的片段也不会被当成命令行选项。生成的 front matter 如下：
+
+```yaml
+---
+title: "VS Code C++ 调试报错：preLaunchTask exit code -1"
+date: 2026-10-01T13:31:44+08:00
+author: farmer3-c
+tags:
+mathjax: true
+draft: false
+---
+```
+
+其他平台或不想用脚本时，手动加引号即可，效果相同：
+
+```bash
+hugo new content "posts/my-new-post/index.md"
+```
+
+> **注意：** `new.cmd` 生成的是 `content/posts/<标题>.md` 单文件形式；需要 page bundle（`content/posts/xxx/index.md`，用于同目录存放图片）时请手动创建或用上面的 `hugo new content` 命令。标题中含 `%` 需写成 `%%`，`&`、`^`、`(`、`)` 为 cmd 特殊字符需转义。
 
 ## 部署
 

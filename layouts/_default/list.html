@@ -38,6 +38,23 @@
 </div>
 {{- end }}
 
+{{- /* 一级栏目页（如 /posts/）顶部展示全站标签总览 */}}
+{{- if and .IsSection .Parent.IsHome }}
+{{- with site.Taxonomies.tags }}
+<div class="tag-cloud">
+  <span class="tag-cloud-label">{{ i18n "tags" | default "标签" }}</span>
+  <ul class="terms-tags">
+    {{- range .Alphabetical }}
+    {{- $count := .Count }}
+    {{- with .Page }}
+    <li><a href="{{ .Permalink }}">{{ .LinkTitle }} <sup>{{ $count }}</sup></a></li>
+    {{- end }}
+    {{- end }}
+  </ul>
+</div>
+{{- end }}
+{{- end }}
+
 {{- $pages := union .RegularPages .Sections }}
 
 {{- if .IsHome }}

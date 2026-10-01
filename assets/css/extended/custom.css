@@ -245,3 +245,29 @@ code, pre, .highlight {
   overflow-x: auto;
   max-width: 100%;
 }
+
+/* ===== 栏目页顶部的标签总览 ===== */
+
+.tag-cloud {
+  margin-bottom: calc(var(--gap) * 1.5);
+}
+
+.tag-cloud-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--secondary);
+  margin-bottom: 10px;
+}
+
+/* 复用主题 .terms-tags 的胶囊样式，只把它与上方标签文字的间距收掉 */
+.tag-cloud .terms-tags {
+  margin-top: 0;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.tag-cloud .terms-tags a {
+  padding: 2px 10px;
+}
